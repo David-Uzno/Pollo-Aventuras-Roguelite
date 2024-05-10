@@ -2,35 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicEnemy : MonoBehaviour
-
+public class Enemigo : MonoBehaviour
 {
-    public Transform Jugador; // Referencia al transform del jugador
-    public float velocidad = 5f; // Velocidad de movimiento del enemigo
+    [SerializeField] private Transform _transformacionJugador;
+    [SerializeField] private float _velocidadMovimiento = 5f;
 
-    void Update()
+    private void Update()
     {
-        if (Jugador != null)
+        if (_transformacionJugador != null)
         {
-            // Calcular la dirección hacia el jugador
-            Vector3 direccion = Jugador.position - transform.position;
-            direccion.Normalize(); // Normalizar para obtener la dirección correcta
+            // Calcular la direcciÃ³n hacia el jugador
+            Vector3 direccion = _transformacionJugador.position - transform.position;
+            direccion.Normalize(); // Normalizar para obtener la direcciÃ³n correcta
 
             // Mover el enemigo hacia el jugador
-            transform.Translate(direccion * velocidad * Time.deltaTime);
+            transform.Translate(direccion * _velocidadMovimiento * Time.deltaTime);
 
-            // Rotar el enemigo hacia la dirección del jugador (opcional)
+            // Rotar el enemigo hacia la direcciÃ³n del jugador (opcional)
             transform.rotation = Quaternion.LookRotation(Vector3.forward, direccion);
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D otro)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (otro.gameObject.CompareTag("Jugador"))
         {
-            gameManager.Instance.PerderVida();
+            GameManager.Instancia.PerderVida();
         }
     }
 }
-
-

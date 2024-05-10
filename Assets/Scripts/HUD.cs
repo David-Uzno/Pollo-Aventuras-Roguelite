@@ -5,25 +5,28 @@ using TMPro;
 
 public class HUD : MonoBehaviour
 {
+    [Header("Referencias")]
+    [SerializeField] private GameManager _gameManager;
+    [SerializeField] private TextMeshProUGUI _textoPuntos;
+    [SerializeField] private GameObject[] _iconosVida;
 
-    public gameManager gameManager;
-    public TextMeshProUGUI puntos;
-    public GameObject[] vidas; 
-   
-    void Update()
+    private void Update()
     {
-        puntos.text = gameManager.PuntosTotales.ToString(); 
+        _textoPuntos.text = _gameManager.PuntosTotales.ToString();
     }
+
     public void ActualizarPuntos(int puntosTotales)
     {
-        puntos.text = puntosTotales.ToString();
+        _textoPuntos.text = puntosTotales.ToString();
     }
+
     public void DesactivarVida(int indice)
     {
-        vidas[indice].SetActive(false);
+        _iconosVida[indice].SetActive(false);
     }
+
     public void ActivarVida(int indice)
     {
-        vidas[indice].SetActive(true);
+        _iconosVida[indice].SetActive(true);
     }
 }
