@@ -8,7 +8,7 @@ public class Corazon : MonoBehaviour
     {
         if (otro.gameObject.CompareTag("Jugador"))
         {
-            GameManager.Instancia.RecuperarVida();
+            GameManager.Instance.RecuperarVida();
             Destroy(gameObject);
         }
     }

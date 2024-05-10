@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instancia { get; private set; }
+    public static GameManager Instance { get; private set; }
 
     [SerializeField] private HUD _interfazUsuario;
 
@@ -16,10 +16,10 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         // Verificar si ya hay una instancia creada
-        if (Instancia == null)
+        if (Instance == null)
         {
             // Si no hay una instancia, establecer esta como la instancia única
-            Instancia = this;
+            Instance = this;
         }
         else
         {

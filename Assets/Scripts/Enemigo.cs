@@ -27,7 +27,7 @@ public class Enemigo : MonoBehaviour
     {
         if (otro.gameObject.CompareTag("Jugador"))
         {
-            GameManager.Instancia.PerderVida();
+            GameManager.Instance.PerderVida();
         }
     }
 }
