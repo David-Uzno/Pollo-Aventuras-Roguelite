@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Enemigo : MonoBehaviour
 {
-    [SerializeField] private Transform _transformacionJugador;
+    [SerializeField] private Transform _seguirJugador;
     [SerializeField] private float _velocidadMovimiento = 5f;
 
     private void Update()
     {
-        if (_transformacionJugador != null)
+        if (_seguirJugador != null)
         {
             // Calcular la dirección hacia el jugador
-            Vector3 direccion = _transformacionJugador.position - transform.position;
+            Vector3 direccion = _seguirJugador.position - transform.position;
             direccion.Normalize(); // Normalizar para obtener la dirección correcta
 
             // Mover el enemigo hacia el jugador
