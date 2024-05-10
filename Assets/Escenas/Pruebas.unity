@@ -226,8 +226,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199775365}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1599505, y: 0.9285691, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.1599121, y: 0.92855835, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 488260969}
   - component: {fileID: 488260968}
   m_Layer: 5
-  m_Name: vida 0
+  m_Name: Vida 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -543,7 +543,9 @@ MonoBehaviour:
   _gameManager: {fileID: 1141215438}
   _textoPuntos: {fileID: 1124885904}
   _iconosVida:
-  - {fileID: 0}
+  - {fileID: 488260967}
+  - {fileID: 1299160723}
+  - {fileID: 703440970}
 --- !u!114 &594147420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,7 +645,7 @@ GameObject:
   - component: {fileID: 703440972}
   - component: {fileID: 703440971}
   m_Layer: 5
-  m_Name: vida 2
+  m_Name: Vida 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -731,7 +733,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1390299358979235781, guid: 55146e394f0047d47a2cffa6f6214564, type: 3}
       propertyPath: m_Name
-      value: "Coraz\xF3n"
+      value: Corazon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517526811494204326, guid: 55146e394f0047d47a2cffa6f6214564, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1094927109, guid: 48f7f6c261e41b64ea083e107ea0ae76, type: 3}
+    - target: {fileID: 6517526811494204326, guid: 55146e394f0047d47a2cffa6f6214564, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6762054643538160610, guid: 55146e394f0047d47a2cffa6f6214564, type: 3}
       propertyPath: m_LocalPosition.x
@@ -941,7 +951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d91b36b3ab40bcc4c9d3918a1cb0323c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interfazUsuario: {fileID: 0}
+  _interfazUsuario: {fileID: 594147419}
 --- !u!4 &1141215439
 Transform:
   m_ObjectHideFlags: 0
@@ -970,7 +980,7 @@ GameObject:
   - component: {fileID: 1299160725}
   - component: {fileID: 1299160724}
   m_Layer: 5
-  m_Name: vida 1
+  m_Name: Vida 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1053,6 +1063,71 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1518289923891644612, guid: 388cf260450852f40bce0a91f504ec7d, type: 3}
   m_PrefabInstance: {fileID: 4022512329573552037}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1905983507
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1872410834154604252, guid: 919ca6e16b43eab4ca67ed7cba07782c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983478340047490096, guid: 919ca6e16b43eab4ca67ed7cba07782c, type: 3}
+      propertyPath: _transformacionJugador
+      value: 
+      objectReference: {fileID: 1701684498}
+    - target: {fileID: 7148916824099637206, guid: 919ca6e16b43eab4ca67ed7cba07782c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.48791385
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148916824099637206, guid: 919ca6e16b43eab4ca67ed7cba07782c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.463911
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148916824099637206, guid: 919ca6e16b43eab4ca67ed7cba07782c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148916824099637206, guid: 919ca6e16b43eab4ca67ed7cba07782c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148916824099637206, guid: 919ca6e16b43eab4ca67ed7cba07782c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148916824099637206, guid: 919ca6e16b43eab4ca67ed7cba07782c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148916824099637206, guid: 919ca6e16b43eab4ca67ed7cba07782c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148916824099637206, guid: 919ca6e16b43eab4ca67ed7cba07782c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148916824099637206, guid: 919ca6e16b43eab4ca67ed7cba07782c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148916824099637206, guid: 919ca6e16b43eab4ca67ed7cba07782c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7182664188873052296, guid: 919ca6e16b43eab4ca67ed7cba07782c, type: 3}
+      propertyPath: m_Name
+      value: Enemigo
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 919ca6e16b43eab4ca67ed7cba07782c, type: 3}
 --- !u!1001 &2624624360386599554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1208,9 +1283,10 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 4022512329573552037}
+  - {fileID: 1905983507}
   - {fileID: 2624624360386599554}
   - {fileID: 1079958000}
   - {fileID: 594147423}
+  - {fileID: 199775367}
   - {fileID: 1141215439}
   - {fileID: 465248685}
-  - {fileID: 199775367}

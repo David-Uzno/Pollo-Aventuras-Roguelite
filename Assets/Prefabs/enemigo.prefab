@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 6983478340047490096}
   - component: {fileID: 2536455770259601801}
   m_Layer: 0
-  m_Name: enemigo
-  m_TagString: Enemy
+  m_Name: Enemigo
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be637f4312773949b4cce0db64c44de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Jugador: {fileID: 0}
-  velocidad: 5
+  _transformacionJugador: {fileID: 0}
+  _velocidadMovimiento: 5
 --- !u!58 &2536455770259601801
 CircleCollider2D:
   m_ObjectHideFlags: 0
