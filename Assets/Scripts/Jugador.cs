@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class Jugador : MonoBehaviour
 {
-    public float velocidad = 5f; // Velocidad de movimiento del jugador
+    public float velocidadMovimiento = 5f; // Velocidad de movimiento del jugador
+    public float velocidadDash = 10f; // Velocidad de dash del jugador
+    public float duracionDash = 0.5f; // Duración del dash en segundos
     public int vidas = 3; // Cantidad inicial de vidas
-
-    private bool canDash = true;
-    private bool isDashing;
-    private float dashingPower = 24f;
-    private float dashingTime = 0.2f;
-    private float dashingCooldown = 1f;
-
-    [SerializeField] private TrailRenderer tr;
+    public bool puedeDash = true; // Indica si el jugador puede realizar un dash
+    private float tiempoUltimoDash; // Tiempo en el que se realizó el último dash
 
     void Update()
     {
@@ -22,10 +18,47 @@ public class Jugador : MonoBehaviour
         float movimientoVertical = Input.GetAxis("Vertical");
 
         // Calcular el vector de movimiento basado en las entradas
-        Vector3 movimiento = new Vector3(movimientoHorizontal, movimientoVertical, 0f) * velocidad * Time.deltaTime;
+        Vector3 movimiento = new Vector3(movimientoHorizontal, movimientoVertical, 0f) * velocidadMovimiento * Time.deltaTime;
 
         // Aplicar el movimiento al jugador
         transform.Translate(movimiento);
+
+        // Verificar si se ha presionado la tecla de dash y si el jugador puede realizar un dash
+        if (Input.GetKeyDown(KeyCode.LeftShift) && puedeDash)
+        {
+            Dash();
+        }
+    }
+
+    void Dash()
+    {
+        // Verificar si ha pasado suficiente tiempo desde el último dash
+        if (Time.time > tiempoUltimoDash + duracionDash)
+        {
+            // Obtener la dirección de dash basada en las entradas de teclado
+            Vector3 direccionDash = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f).normalized;
+
+            // Aplicar el impulso al jugador en la dirección del dash
+            transform.position += direccionDash * velocidadDash * Time.deltaTime;
+
+            // Actualizar el tiempo del último dash
+            tiempoUltimoDash = Time.time;
+
+            // Desactivar la capacidad de hacer dash durante un tiempo
+            puedeDash = false;
+
+            // Iniciar una corrutina para reactivar la capacidad de hacer dash después de un cierto tiempo
+            StartCoroutine(ReactivarDash());
+        }
+    }
+
+    IEnumerator ReactivarDash()
+    {
+        // Esperar durante la duración del dash
+        yield return new WaitForSeconds(duracionDash);
+
+        // Reactivar la capacidad de hacer dash
+        puedeDash = true;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -52,8 +85,9 @@ public class Jugador : MonoBehaviour
             // Aquí puedes agregar más acciones como reiniciar el nivel o mostrar un mensaje de Game Over
         }
     }
-    
 }
+
+
 
 
 
