@@ -86,4 +86,9 @@ public class Jugador : MonoBehaviour
             Debug.Log("¡Has perdido todas tus vidas! Game Over.");
         }
     }
+    public void RecuperarVida()
+    {
+        _cantidadVidas++; // Aumenta la cantidad de vidas
+        Debug.Log("¡Has recuperado una vida! Vidas restantes: " + _cantidadVidas);
+    }
 }
