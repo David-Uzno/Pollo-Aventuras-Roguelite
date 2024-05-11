@@ -9,7 +9,6 @@ public class Jugador : MonoBehaviour
     [SerializeField] private float _velocidadDash = 10f;
     [SerializeField] private float _duracionDash = 0.5f;
 
-
     [Header("Estado del Jugador")]
     [SerializeField] private int _cantidadVidas = 3;
     [SerializeField] private bool _puedeRealizarDash = true;
