@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 3971037788691465900}
   - component: {fileID: 2354127130149023514}
   m_Layer: 0
-  m_Name: Jugador
-  m_TagString: Player
+  m_Name: jugador
+  m_TagString: Jugador
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _velocidadMovimiento: 5
-  _velocidadDash: 10
-  _duracionDash: 0.5
+  _velocidadDash: 50
+  _duracionDash: 2
   _cantidadVidas: 3
   _puedeRealizarDash: 1
