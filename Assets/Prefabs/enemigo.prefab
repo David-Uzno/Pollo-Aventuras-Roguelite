@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1872410834154604252}
   - component: {fileID: 6983478340047490096}
   - component: {fileID: 2536455770259601801}
+  - component: {fileID: 284934308549411282}
   m_Layer: 0
   m_Name: enemigo
   m_TagString: Enemigo
@@ -75,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.013375282, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 1996358330, guid: 259a28639af82ef4bb0672f15d693a60, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,10 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be637f4312773949b4cce0db64c44de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _seguirJugador: {fileID: 0}
-  _velocidadMovimiento: 5
-  _limitesMovimientoMin: {x: -5, y: -5}
-  _limitesMovimientoMax: {x: 5, y: 5}
+  vida: 3
 --- !u!58 &2536455770259601801
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -137,3 +135,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &284934308549411282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7182664188873052296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dfcc31ae6ec8e049b888b166b662bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidadMovimiento: 2
+  puntosMovimientos:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  distanciaMinima: 0.2
