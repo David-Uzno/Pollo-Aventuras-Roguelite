@@ -17,9 +17,9 @@ public class Corazon : MonoBehaviour
             }
 
             // Notificar al GameManager
-            GameManager.Instance.RecuperarVida();
+            GameManager.Instancia.RecuperarVida();
 
-            // Destruir el objeto del corazón
+            // Destruir el objeto del corazï¿½n
             Destroy(gameObject);
         }
     }

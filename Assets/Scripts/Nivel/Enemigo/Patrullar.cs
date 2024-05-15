@@ -4,39 +4,49 @@ using UnityEngine;
 
 public class Patrullar : MonoBehaviour
 {
-    [SerializeField] private float velocidadMovimiento;
-    [SerializeField] private Transform[] puntosMovimientos;
-    [SerializeField] private float distanciaMinima;
+    [SerializeField] private float _velocidadMovimiento;
+    [SerializeField] private Transform[] _puntosPatrulla;
+    [SerializeField] private float _distanciaMinima;
 
-    private int numeroAleatorio;
-    private SpriteRenderer spriteRender;
+    private int _puntoActual;
+    private SpriteRenderer _spriteRenderer;
 
     private void Start()
     {
-        numeroAleatorio = Random.Range(0,puntosMovimientos.Length);
-        spriteRender = GetComponent<SpriteRenderer>();
+        _puntoActual = Random.Range(0, _puntosPatrulla.Length);
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         Girar();
     }
-
    
     private void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, puntosMovimientos[numeroAleatorio].position,velocidadMovimiento * Time.deltaTime);
-        if (Vector2.Distance(transform.position, puntosMovimientos[numeroAleatorio].position) < distanciaMinima)
+        MoverHaciaPunto();
+        VerificarDistancia();
+    }
+
+    private void MoverHaciaPunto()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, _puntosPatrulla[_puntoActual].position, _velocidadMovimiento * Time.deltaTime);
+    }
+
+    private void VerificarDistancia()
+    {
+        if (Vector2.Distance(transform.position, _puntosPatrulla[_puntoActual].position) < _distanciaMinima)
         {
-            numeroAleatorio = Random.Range(0,puntosMovimientos.Length);
+            _puntoActual = Random.Range(0, _puntosPatrulla.Length);
             Girar();
         }
     }
+
     private void Girar()
     {
-        if(transform.position.x < puntosMovimientos[numeroAleatorio].position.x)
+        if (transform.position.x < _puntosPatrulla[_puntoActual].position.x)
         {
-            spriteRender.flipX = true;
+            _spriteRenderer.flipX = true;
         }
         else
         {
-            spriteRender.flipY = false;
+            _spriteRenderer.flipX = false;
         }
     }
 }
