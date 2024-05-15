@@ -896,6 +896,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4275340837337036185, guid: 55146e394f0047d47a2cffa6f6214564, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4275340837337036185, guid: 55146e394f0047d47a2cffa6f6214564, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6517526811494204326, guid: 55146e394f0047d47a2cffa6f6214564, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -4031,8 +4039,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 2023371833}
   - {fileID: 4022512329573552037}
+  - {fileID: 2023371833}
   - {fileID: 2624624360386599554}
   - {fileID: 1079958000}
   - {fileID: 594147423}
