@@ -4,27 +4,12 @@ using UnityEngine;
 
 public abstract class BasicoEnemigo : MonoBehaviour
 {
-    [SerializeField] private float Vida;
-    [SerializeField] private float Daño;
-    [SerializeField] private float Velocidad;
+    [SerializeField] public float _vida;
+    [SerializeField] private float _ataque;
+    [SerializeField] private float _velocidad;
     [SerializeField] private List<GameObject> Recompensa = new List<GameObject>();
 
-    void Update()
-    {
-        Debug.Log("Update");
-    }
-
-    public void Ataque()
-    {
-        Debug.Log("Ataque");
-    }
-
-    public abstract void AtaqueEspecial();
-
-    public void TomarDaño()
-    {
-        Debug.Log("Tomar Daño");
-    }
+    public abstract void TomarDaño(float daño);
 
     private void OnTriggerEnter2D(Collider2D other)
     {

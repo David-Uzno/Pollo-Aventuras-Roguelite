@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CombateCaC : MonoBehaviour
 {
-    [SerializeField] private Transform controladorGolpe;
-    [SerializeField] private float radioGolpe;
-    [SerializeField] private float dañoGolpe;
+    [SerializeField] private Transform _controladorGolpe;
+    [SerializeField] private float _radioGolpe;
+    [SerializeField] private float _daÃ±oGolpe;
 
     private void Update()
     {
@@ -15,21 +15,27 @@ public class CombateCaC : MonoBehaviour
             Golpe();
         }
     }
+
     private void Golpe()
     {
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(controladorGolpe.position, radioGolpe);
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(_controladorGolpe.position, _radioGolpe);
         foreach (Collider2D colicionador in objetos)
         {
             if (colicionador.CompareTag("Enemigo"))
             {
-                colicionador.transform.GetComponent<Enemigo>().TomarDaño(dañoGolpe);
+                // Cambia Enemigo por EnemigoVariante
+                EnemigoVariante enemigo = colicionador.transform.GetComponent<EnemigoVariante>();
+                if (enemigo != null)
+                {
+                    enemigo.TomarDaÃ±o(_daÃ±oGolpe);
+                }
             }
         }
-
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(controladorGolpe.position, radioGolpe);
+        Gizmos.DrawWireSphere(_controladorGolpe.position, _radioGolpe);
     }
 }

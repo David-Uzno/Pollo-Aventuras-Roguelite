@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class EnemigoVariante : BasicoEnemigo
 {
-    public void Update()
+    public override void TomarDaño(float daño)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        _vida -= daño;
+        if (_vida <= 0)
         {
-            AtaqueEspecial();
-            TomarDaño();
+            Destroy(gameObject);
         }
-    }
-
-    public override void AtaqueEspecial()
-    {
-        Debug.Log($"Ataque Especial de Variante");
     }
 }
