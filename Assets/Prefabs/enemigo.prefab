@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7148916824099637206}
   - component: {fileID: 1872410834154604252}
-  - component: {fileID: 6983478340047490096}
   - component: {fileID: 2536455770259601801}
+  - component: {fileID: -8692455044144742013}
   - component: {fileID: 284934308549411282}
   m_Layer: 0
-  m_Name: enemigo
+  m_Name: Enemigo
   m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,19 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6983478340047490096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7182664188873052296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2be637f4312773949b4cce0db64c44de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vida: 3
 --- !u!58 &2536455770259601801
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -135,6 +122,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-8692455044144742013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7182664188873052296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5613a19aaace4247bd5d39e9cd34e7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _vida: 3
+  _ataque: 0
+  _velocidad: 0
+  Recompensa: []
 --- !u!114 &284934308549411282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,10 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfcc31ae6ec8e049b888b166b662bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: 2
-  puntosMovimientos:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  distanciaMinima: 0.2
+  _velocidadMovimiento: 0
+  _puntosPatrulla: []
+  _distanciaMinima: 0

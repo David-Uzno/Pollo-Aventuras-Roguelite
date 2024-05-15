@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public static GameManager Instancia { get; private set; }
 
     [SerializeField] private HUD _interfazUsuario;
 
@@ -13,13 +13,16 @@ public class GameManager : MonoBehaviour
     private int _puntosTotales;
     private int _cantidadVidas = 3;
 
+    [Header("Otros")]
+    [SerializeField] FPSCounter _FPSContador;
+
     private void Awake()
     {
         // Verificar si ya hay una instancia creada
-        if (Instance == null)
+        if (Instancia == null)
         {
             // Si no hay una instancia, establecer esta como la instancia única
-            Instance = this;
+            Instancia = this;
         }
         else
         {
@@ -46,5 +49,13 @@ public class GameManager : MonoBehaviour
     {
         _interfazUsuario.ActivarVida(_cantidadVidas);
         _cantidadVidas++;
+    }
+
+    void FPS()
+    {
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            _FPSContador.Show();
+        }
     }
 }
