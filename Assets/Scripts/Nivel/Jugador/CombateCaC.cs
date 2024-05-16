@@ -6,7 +6,14 @@ public class CombateCaC : MonoBehaviour
 {
     [SerializeField] private Transform _controladorGolpe;
     [SerializeField] private float _radioGolpe;
-    [SerializeField] private float _dañoGolpe;
+    [SerializeField] private float _dañoBaseGolpe;
+
+    private float _dañoActualGolpe;
+
+    private void Start()
+    {
+        _dañoActualGolpe = _dañoBaseGolpe;
+    }
 
     private void Update()
     {
@@ -19,15 +26,15 @@ public class CombateCaC : MonoBehaviour
     private void Golpe()
     {
         Collider2D[] objetos = Physics2D.OverlapCircleAll(_controladorGolpe.position, _radioGolpe);
-        foreach (Collider2D colicionador in objetos)
+        foreach (Collider2D colisionador in objetos)
         {
-            if (colicionador.CompareTag("Enemigo"))
+            if (colisionador.CompareTag("Enemigo"))
             {
                 // Cambia Enemigo por EnemigoVariante
-                EnemigoVariante enemigo = colicionador.transform.GetComponent<EnemigoVariante>();
+                EnemigoVariante enemigo = colisionador.transform.GetComponent<EnemigoVariante>();
                 if (enemigo != null)
                 {
-                    enemigo.TomarDaño(_dañoGolpe);
+                    enemigo.TomarDaño(_dañoActualGolpe);
                 }
             }
         }
@@ -38,4 +45,17 @@ public class CombateCaC : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_controladorGolpe.position, _radioGolpe);
     }
+
+    public void AumentarDaño(float multiplicador, float duracion)
+    {
+        StartCoroutine(ActivarPowerUp(multiplicador, duracion));
+    }
+
+    private IEnumerator ActivarPowerUp(float multiplicador, float duracion)
+    {
+        _dañoActualGolpe = _dañoBaseGolpe * multiplicador;
+        yield return new WaitForSeconds(duracion);
+        _dañoActualGolpe = _dañoBaseGolpe;
+    }
 }
+
