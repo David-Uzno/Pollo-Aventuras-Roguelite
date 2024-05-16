@@ -138,6 +138,9 @@ MonoBehaviour:
   _ataque: 0
   _velocidad: 0
   Recompensa: []
+  _vida: 3
+  _dropItems:
+  - {fileID: 1462721857261657782, guid: 43ed435842483f744ba0ccb801f90367, type: 3}
 --- !u!114 &284934308549411282
 MonoBehaviour:
   m_ObjectHideFlags: 0

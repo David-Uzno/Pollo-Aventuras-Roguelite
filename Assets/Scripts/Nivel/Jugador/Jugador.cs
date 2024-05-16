@@ -73,7 +73,7 @@ public class Jugador : MonoBehaviour
         }
     }
 
-    private void PerderVida()
+    public void PerderVida()
     {
         _cantidadVidas--; // Disminuye la cantidad de vidas
         Debug.Log("Vidas restantes: " + _cantidadVidas);
