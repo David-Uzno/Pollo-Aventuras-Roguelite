@@ -10,6 +10,7 @@ public abstract class BasicoEnemigo : MonoBehaviour
     [SerializeField] private List<GameObject> Recompensa = new List<GameObject>();
 
     public abstract void TomarDaño(float daño);
+    public abstract void DropItem();
 
     private void OnTriggerEnter2D(Collider2D other)
     {

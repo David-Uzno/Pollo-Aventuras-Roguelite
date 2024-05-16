@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8692455044144742013}
   - component: {fileID: 284934308549411282}
   m_Layer: 0
-  m_Name: Enemigo
+  m_Name: enemigo
   m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,6 +150,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfcc31ae6ec8e049b888b166b662bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocidadMovimiento: 0
-  _puntosPatrulla: []
-  _distanciaMinima: 0
+  _velocidadMovimiento: 5
+  _puntosPatrulla:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _distanciaMinima: 0.2
