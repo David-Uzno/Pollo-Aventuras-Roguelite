@@ -7,7 +7,7 @@ public class TPJugador : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D otro)
     {
         // Comprueba si el objeto con el que colisiona tiene el tag "Teleporter"
-        if (otro.CompareTag("Teleporter"))
+        if (otro.CompareTag("Teletransportador"))
         {
             // Obtiene el componente Teleporter del objeto con el que colisiona
             Teletransportador teleporter = otro.GetComponent<Teletransportador>();

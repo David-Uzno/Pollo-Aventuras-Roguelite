@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 126438450}
   m_Layer: 0
   m_Name: TP (2)
-  m_TagString: Teleporter
+  m_TagString: Teletransportador
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2938,7 +2938,7 @@ GameObject:
   - component: {fileID: 454571658}
   m_Layer: 0
   m_Name: TP (4)
-  m_TagString: Teleporter
+  m_TagString: Teletransportador
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6063,7 +6063,7 @@ GameObject:
   - component: {fileID: 624200888}
   m_Layer: 0
   m_Name: TP (1)
-  m_TagString: Teleporter
+  m_TagString: Teletransportador
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6276,7 +6276,7 @@ GameObject:
   - component: {fileID: 731710033}
   m_Layer: 0
   m_Name: TP (3)
-  m_TagString: Teleporter
+  m_TagString: Teletransportador
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12025,7 +12025,6 @@ MonoBehaviour:
   _velocidad: 0
   Recompensa:
   - {fileID: 0}
-  _vida: 2
   _dropItems:
   - {fileID: 0}
   controladorDisparo: {fileID: 411965230}
@@ -14705,7 +14704,7 @@ GameObject:
   - component: {fileID: 1993961759}
   m_Layer: 0
   m_Name: TP
-  m_TagString: Teleporter
+  m_TagString: Teletransportador
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
