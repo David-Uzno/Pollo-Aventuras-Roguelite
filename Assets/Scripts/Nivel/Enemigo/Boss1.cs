@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Boss1 : BasicoEnemigo
 {
     [SerializeField] private List<GameObject> _dropItems; // Lista de posibles objetos a dropear
@@ -11,8 +10,13 @@ public class Boss1 : BasicoEnemigo
     [SerializeField] private float dañoSalto; // Daño causado por el salto
     [SerializeField] private LayerMask capaJugador; // Capa del jugador para detectar colisiones
 
+    [SerializeField] private Vector2 coordenadasActivacion; // Coordenadas para activar el jefe
+    [SerializeField] private float rangoActivacion = 1f; // Rango de activación
+
     private bool estaCargandoSalto;
     private float tiempoUltimoSalto;
+    private bool estaActivo;
+
 
     private void Start()
     {
@@ -20,14 +24,26 @@ public class Boss1 : BasicoEnemigo
         {
             jugador = GameObject.FindGameObjectWithTag("Jugador").transform;
         }
+        estaActivo = false;
     }
 
     private void Update()
     {
-        if (!estaCargandoSalto && Time.time > tiempoUltimoSalto + tiempoCargaSalto)
+        if (!estaActivo && Vector2.Distance(jugador.position, coordenadasActivacion) <= rangoActivacion)
+        {
+            ActivarBoss();
+        }
+
+        if (estaActivo && !estaCargandoSalto && Time.time > tiempoUltimoSalto + tiempoCargaSalto)
         {
             StartCoroutine(CargarSalto());
         }
+    }
+
+    private void ActivarBoss()
+    {
+        estaActivo = true;
+        gameObject.SetActive(true);
     }
 
     private IEnumerator CargarSalto()
@@ -47,6 +63,8 @@ public class Boss1 : BasicoEnemigo
     {
         // Calcula la dirección hacia el jugador
         Vector2 direccionSalto = (jugador.position - transform.position).normalized;
+        float velocidadSalto = 2f;
+        direccionSalto *= velocidadSalto;
 
         // Salta a la posición del jugador
         transform.position = (Vector2)transform.position + direccionSalto;
@@ -55,7 +73,6 @@ public class Boss1 : BasicoEnemigo
         Collider2D[] objetosAfectados = Physics2D.OverlapCircleAll(transform.position, radioDaño, capaJugador);
         foreach (Collider2D colisionador in objetosAfectados)
         {
-            
         }
     }
 
@@ -85,8 +102,11 @@ public class Boss1 : BasicoEnemigo
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, radioDaño); 
+        Gizmos.DrawWireSphere(transform.position, radioDaño);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(coordenadasActivacion, rangoActivacion); // Dibuja el rango de activación en la escena
     }
 }
+
 
 

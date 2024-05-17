@@ -25,16 +25,16 @@ public class CombateCaC : MonoBehaviour
 
     private void Golpe()
     {
+       
         Collider2D[] objetos = Physics2D.OverlapCircleAll(_controladorGolpe.position, _radioGolpe);
         foreach (Collider2D colisionador in objetos)
         {
-            if (colisionador.CompareTag("Enemigo"))
+            if (colisionador.CompareTag("Enemigo") || colisionador.CompareTag("EnemigoEspecial") || colisionador.CompareTag("Boss"))
             {
-                // Cambia Enemigo por EnemigoVariante
-                EnemigoVariante enemigo = colisionador.transform.GetComponent<EnemigoVariante>();
-                if (enemigo != null)
+                BasicoEnemigo vidaEnemigo = colisionador.GetComponent<BasicoEnemigo>();
+                if (vidaEnemigo != null)
                 {
-                    enemigo.TomarDaño(_dañoActualGolpe);
+                    vidaEnemigo.TomarDaño(_dañoActualGolpe);
                 }
             }
         }

@@ -19,5 +19,9 @@ public class BalaEnemigo : MonoBehaviour
             Destroy(gameObject);
 
         }
+        if (other.gameObject.CompareTag("Jugador"))
+        {
+            GameManager.Instancia.PerderVida();
+        }
     }
 }
