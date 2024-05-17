@@ -4,39 +4,27 @@ using UnityEngine;
 
 public class CombateCaC : MonoBehaviour
 {
+    #region Variables
     [SerializeField] private Transform _controladorGolpe;
     [SerializeField] private float _radioGolpe;
     [SerializeField] private float _dañoBaseGolpe;
 
     private float _dañoActualGolpe;
+    #endregion
 
+    #region Unity Métodos
     private void Start()
     {
-        _dañoActualGolpe = _dañoBaseGolpe;
+        // Inicializa el daño actual al valor base
+        _dañoActualGolpe = InicializarDaño(_dañoBaseGolpe);
     }
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Golpe();
-        }
-    }
-
-    private void Golpe()
-    {
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(_controladorGolpe.position, _radioGolpe);
-        foreach (Collider2D colisionador in objetos)
-        {
-            if (colisionador.CompareTag("Enemigo"))
-            {
-                // Cambia Enemigo por EnemigoVariante
-                EnemigoVariante enemigo = colisionador.transform.GetComponent<EnemigoVariante>();
-                if (enemigo != null)
-                {
-                    enemigo.TomarDaño(_dañoActualGolpe);
-                }
-            }
+            // Realiza un golpe con el daño actual
+            Golpe(_dañoActualGolpe);
         }
     }
 
@@ -45,16 +33,57 @@ public class CombateCaC : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_controladorGolpe.position, _radioGolpe);
     }
+    #endregion
 
+    #region Métodos de Golpe
+    private void Golpe(float daño)
+    {
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(_controladorGolpe.position, _radioGolpe);
+        foreach (Collider2D colisionador in objetos)
+        {
+            if (colisionador.CompareTag("Enemigo"))
+            {
+                EnemigoVariante enemigo = colisionador.transform.GetComponent<EnemigoVariante>();
+                if (enemigo != null)
+                {
+                    // Aplica el daño al enemigo si es detectado
+                    enemigo.TomarDaño(daño);
+                }
+            }
+        }
+    }
+    #endregion
+
+    #region Métodos de Power-Up
     public void AumentarDaño(float multiplicador, float duracion)
     {
+        // Inicia un power-up que aumenta el daño
         StartCoroutine(ActivarPowerUp(multiplicador, duracion));
     }
 
     private IEnumerator ActivarPowerUp(float multiplicador, float duracion)
     {
-        _dañoActualGolpe = _dañoBaseGolpe * multiplicador;
+        // Calcula y ajusta el nuevo daño con el multiplicador
+        float dañoModificado = _dañoBaseGolpe * multiplicador;
+        _dañoActualGolpe = AjustarDaño(dañoModificado, duracion);
+
+        // Espera la duración del power-up
         yield return new WaitForSeconds(duracion);
+
+        // Restaura el daño actual al valor base
         _dañoActualGolpe = _dañoBaseGolpe;
     }
+    #endregion
+
+    #region Métodos de Utilidad
+    private float InicializarDaño(float dañoBase)
+    {
+        return dañoBase;
+    }
+
+    private float AjustarDaño(float dañoModificado, float duracion)
+    {
+        return dañoModificado;
+    }
+    #endregion
 }
