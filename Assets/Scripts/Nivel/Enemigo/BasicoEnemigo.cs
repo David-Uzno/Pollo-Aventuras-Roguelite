@@ -12,7 +12,7 @@ public abstract class BasicoEnemigo : MonoBehaviour
     public abstract void TomarDaño(float daño);
     public abstract void DropItem();
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Jugador"))
         {
