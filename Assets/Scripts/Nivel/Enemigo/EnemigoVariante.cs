@@ -16,7 +16,7 @@ public class EnemigoVariante : BasicoEnemigo
             Destroy(gameObject);
         }
     }
-
+    
     public override void DropItem()
     {
         if (_dropItems.Count > 0)

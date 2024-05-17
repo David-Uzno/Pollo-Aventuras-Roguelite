@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7182664188873052296
+--- !u!1 &177033147886889651
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7148916824099637206}
-  - component: {fileID: 1872410834154604252}
-  - component: {fileID: 2536455770259601801}
-  - component: {fileID: -8692455044144742013}
-  - component: {fileID: 284934308549411282}
+  - component: {fileID: 3947318072993314265}
+  - component: {fileID: 142526056200251855}
+  - component: {fileID: 7838423590235282629}
+  - component: {fileID: 7816267937671641559}
   m_Layer: 0
-  m_Name: Enemigo
+  m_Name: Ojo
   m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7148916824099637206
+--- !u!4 &3947318072993314265
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7182664188873052296}
+  m_GameObject: {fileID: 177033147886889651}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -6.47, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 278777131361387583}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1872410834154604252
+--- !u!212 &142526056200251855
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7182664188873052296}
+  m_GameObject: {fileID: 177033147886889651}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -75,25 +75,25 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 1996358330, guid: 259a28639af82ef4bb0672f15d693a60, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -1987354085, guid: 5dcf0099cd2ec6d40a46a7b75b36a8c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &2536455770259601801
+--- !u!58 &7838423590235282629
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7182664188873052296}
+  m_GameObject: {fileID: 177033147886889651}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -121,51 +121,66 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &-8692455044144742013
+  m_Radius: 0.6
+--- !u!114 &7816267937671641559
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7182664188873052296}
+  m_GameObject: {fileID: 177033147886889651}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5613a19aaace4247bd5d39e9cd34e7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 256537f9d431ce44f99b69eae77e15f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vida: 3
+  _vida: 2
   _ataque: 0
   _velocidad: 0
-  Recompensa: []
-  _vida: 3
+  Recompensa:
+  - {fileID: 0}
   _dropItems:
-  - {fileID: 1462721857261657782, guid: 43ed435842483f744ba0ccb801f90367, type: 3}
---- !u!114 &284934308549411282
-MonoBehaviour:
+  - {fileID: 0}
+  controladorDisparo: {fileID: 278777131361387583}
+  distanciaLinea: 6
+  capaJugador:
+    serializedVersion: 2
+    m_Bits: 64
+  jugadorEnRango: 0
+  BalaEnemigo: {fileID: 748388117753188859, guid: c9a90e9eaa476a04fa04325aae2f6f72, type: 3}
+  tiempoEntreDisparos: 3
+  tiempoUltimoDisparo: 0
+  tiempoEsperaDisparo: 0
+  velocidadDisparo: 0
+  velocidadRotacion: 0
+--- !u!1 &3981925119940326357
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7182664188873052296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dfcc31ae6ec8e049b888b166b662bc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _velocidadMovimiento: 5
-  _puntosPatrulla:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _distanciaMinima: 0.2
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 278777131361387583}
+  m_Layer: 0
+  m_Name: ControladorDisparo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &278777131361387583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3981925119940326357}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3947318072993314265}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

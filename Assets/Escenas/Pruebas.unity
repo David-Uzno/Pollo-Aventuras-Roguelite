@@ -2952,7 +2952,7 @@ Transform:
   m_GameObject: {fileID: 454571656}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.15, y: -49.006447, z: 0.056403812}
+  m_LocalPosition: {x: 9.16, y: -49.98, z: 0.056403812}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6077,7 +6077,7 @@ Transform:
   m_GameObject: {fileID: 624200886}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.0737624, y: -28.13, z: 0.056403812}
+  m_LocalPosition: {x: 0, y: -29.22, z: 0.056403812}
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6290,7 +6290,7 @@ Transform:
   m_GameObject: {fileID: 731710031}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 44.90624, y: -29.17, z: 0.056403812}
+  m_LocalPosition: {x: 45.95, y: -30.08, z: 0.056403812}
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12003,7 +12003,7 @@ GameObject:
   - component: {fileID: 1745862407}
   m_Layer: 0
   m_Name: Ojo
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12134,7 +12134,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745862406}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.47, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14776,7 +14776,7 @@ Transform:
   m_GameObject: {fileID: 1993961758}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.0737624, y: -5.19, z: 0.056403812}
+  m_LocalPosition: {x: 0.03, y: -6.18, z: 0.056403812}
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

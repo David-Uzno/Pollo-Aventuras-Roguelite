@@ -16,7 +16,8 @@ public class EnemigoEspecial : BasicoEnemigo
     public float velocidadDisparo;
     public float velocidadRotacion;
 
-
+    
+    
     private void Update()
     {
         

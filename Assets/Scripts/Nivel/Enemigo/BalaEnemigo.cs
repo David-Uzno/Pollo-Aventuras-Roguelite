@@ -17,6 +17,7 @@ public class BalaEnemigo : MonoBehaviour
         {
             jugador.PerderVida();
             Destroy(gameObject);
+
         }
     }
 }
