@@ -43,7 +43,7 @@ public class CombateCaC : MonoBehaviour
         {
             if (colisionador.CompareTag("Enemigo") || colisionador.CompareTag("EnemigoEspecial") || colisionador.CompareTag("Boss"))
             {
-                BasicoEnemigo enemigo = colisionador.transform.GetComponent<EnemigoVariante>();
+                BasicoEnemigo enemigo = colisionador.transform.GetComponent<BasicoEnemigo>();
                 if (enemigo != null)
                 {
                     // Aplica el daño al enemigo si es detectado
