@@ -41,9 +41,9 @@ public class CombateCaC : MonoBehaviour
         Collider2D[] objetos = Physics2D.OverlapCircleAll(_controladorGolpe.position, _radioGolpe);
         foreach (Collider2D colisionador in objetos)
         {
-            if (colisionador.CompareTag("Enemigo"))
+            if (colisionador.CompareTag("Enemigo") || colisionador.CompareTag("EnemigoEspecial") || colisionador.CompareTag("Boss"))
             {
-                EnemigoVariante enemigo = colisionador.transform.GetComponent<EnemigoVariante>();
+                BasicoEnemigo enemigo = colisionador.transform.GetComponent<EnemigoVariante>();
                 if (enemigo != null)
                 {
                     // Aplica el daño al enemigo si es detectado
