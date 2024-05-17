@@ -14,17 +14,36 @@ public class EnemigoEspecial : BasicoEnemigo
     public float tiempoEntreDisparos;
     public float tiempoUltimoDisparo;
     public float tiempoEsperaDisparo;
+    public float velocidadDisparo;
+    public float velocidadRotacion;
+
+
     private void Update()
     {
+        
+        MoverControladorDisparo();
+        RotarControladorDisparo();
+
+     
         jugadorEnRango = Physics2D.Raycast(controladorDisparo.position, transform.right, distanciaLinea, capaJugador);
         if (jugadorEnRango)
         {
-            if (Time.time > tiempoEntreDisparos + tiempoEntreDisparos)
+            if (Time.time > tiempoUltimoDisparo + tiempoEntreDisparos)
             {
                 tiempoUltimoDisparo = Time.time;
                 Invoke(nameof(Disparar), tiempoEsperaDisparo);
             }
         }
+    }
+    private void MoverControladorDisparo()
+    {
+      
+        controladorDisparo.position += transform.right * velocidadDisparo * Time.deltaTime;
+    }
+    private void RotarControladorDisparo()
+    {
+        
+        controladorDisparo.Rotate(Vector3.forward, velocidadRotacion * Time.deltaTime);
     }
 
     private void OnDrawGizmos()
