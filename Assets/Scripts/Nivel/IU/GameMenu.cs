@@ -6,7 +6,7 @@ public class GameMenu : MonoBehaviour
 {
     [SerializeField] GameObject _pausePanel;
     bool _isGamePaused = false;
-    
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))

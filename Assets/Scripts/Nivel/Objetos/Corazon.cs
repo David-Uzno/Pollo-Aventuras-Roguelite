@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Corazon : MonoBehaviour
 {
-   
     private void OnTriggerEnter2D(Collider2D otro)
     {
         if (otro.gameObject.CompareTag("Jugador"))
@@ -19,9 +18,8 @@ public class Corazon : MonoBehaviour
             // Notificar al GameManager
             GameManager.Instancia.RecuperarVida();
 
-            // Destruir el objeto del coraz�n
+            // Destruir el objeto del corazón
             Destroy(gameObject);
         }
     }
-
 }

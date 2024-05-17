@@ -5,7 +5,6 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class EnemigoVariante : BasicoEnemigo
 {
-    [SerializeField] private float _vida;
     [SerializeField] private List<GameObject> _dropItems; // Lista de posibles objetos a dropear
 
     public override void TomarDaño(float daño)

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BalaEnemigo : MonoBehaviour
 {
     public float velocidad;
-    public int daño;
+    public int daÃ±o;
     
     void Update()
     {

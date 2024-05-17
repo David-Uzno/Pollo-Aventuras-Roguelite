@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemigoEspecial : BasicoEnemigo
 {
-    [SerializeField] private float _vida;
     [SerializeField] private List<GameObject> _dropItems;
     public Transform controladorDisparo;
     public float distanciaLinea;
@@ -52,9 +51,9 @@ public class EnemigoEspecial : BasicoEnemigo
         Gizmos.DrawLine(controladorDisparo.position, controladorDisparo.position + transform.right *  distanciaLinea);
     }
 
-    public override void TomarDaño(float daño)
+    public override void TomarDaÃ±o(float daÃ±o)
     {
-        _vida -= daño;
+        _vida -= daÃ±o;
         if (_vida <= 0)
         {
             DropItem();
