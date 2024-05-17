@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b2cc006465f0e45892240bde85e02d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleportCoordinates: {x: 46, y: -24, z: 0}
+  CoordenadasTeletransporte: {x: 46, y: -24, z: 0}
 --- !u!4 &183415304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7148916824099637206, guid: 919ca6e16b43eab4ca67ed7cba07782c, type: 3}
@@ -3015,7 +3015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b2cc006465f0e45892240bde85e02d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleportCoordinates: {x: 46, y: -53, z: 0}
+  CoordenadasTeletransporte: {x: 46, y: -53, z: 0}
 --- !u!1 &465248682
 GameObject:
   m_ObjectHideFlags: 0
@@ -6140,7 +6140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b2cc006465f0e45892240bde85e02d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleportCoordinates: {x: 0, y: -50, z: 0}
+  CoordenadasTeletransporte: {x: 0, y: -50, z: 0}
 --- !u!1 &703440970
 GameObject:
   m_ObjectHideFlags: 0
@@ -6353,7 +6353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b2cc006465f0e45892240bde85e02d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleportCoordinates: {x: 46, y: -53, z: 0}
+  CoordenadasTeletransporte: {x: 46, y: -53, z: 0}
 --- !u!1 &832704821
 GameObject:
   m_ObjectHideFlags: 0
@@ -11442,8 +11442,8 @@ Transform:
   - {fileID: 1993961761}
   - {fileID: 624200887}
   - {fileID: 126438449}
-  - {fileID: 454571657}
   - {fileID: 731710032}
+  - {fileID: 454571657}
   m_Father: {fileID: 1840618948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1243835344
@@ -12038,6 +12038,8 @@ MonoBehaviour:
   tiempoEntreDisparos: 3
   tiempoUltimoDisparo: 0
   tiempoEsperaDisparo: 0
+  velocidadDisparo: 0
+  velocidadRotacion: 0
 --- !u!58 &1745862408
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -14765,7 +14767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b2cc006465f0e45892240bde85e02d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleportCoordinates: {x: 0, y: -23, z: 0}
+  CoordenadasTeletransporte: {x: 0, y: -23, z: 0}
 --- !u!4 &1993961761
 Transform:
   m_ObjectHideFlags: 0
