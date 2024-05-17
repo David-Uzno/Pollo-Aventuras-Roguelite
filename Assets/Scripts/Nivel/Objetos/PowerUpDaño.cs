@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PowerUpDaño : MonoBehaviour
 {
-    public float damageMultiplier = 2f; // Factor por el cual se multiplicará el daño
-    public float duration = 5f; // Duración del power-up en segundos
+    [SerializeField] private float _dañoMultiplicado = 2f;
+    [SerializeField] private float _duracion = 5f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -18,7 +18,7 @@ public class PowerUpDaño : MonoBehaviour
             // Si el jugador tiene el componente CombateCaC, activa el power-up
             if (combate != null)
             {
-                combate.AumentarDaño(damageMultiplier, duration);
+                combate.AumentarDaño(_dañoMultiplicado, _duracion);
 
                 // Destruye el objeto power-up después de activarlo
                 Destroy(gameObject);
@@ -26,6 +26,3 @@ public class PowerUpDaño : MonoBehaviour
         }
     }
 }
-
-
-

@@ -91,8 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71cb9dd0aa4c8c4481f2a92a1135637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMultiplier: 3
-  duration: 10
+  "_da\xF1oMultiplicado": 3
+  _duracion: 10
 --- !u!212 &5521187988472504055
 SpriteRenderer:
   m_ObjectHideFlags: 0

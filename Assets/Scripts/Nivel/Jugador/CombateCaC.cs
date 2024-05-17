@@ -58,4 +58,3 @@ public class CombateCaC : MonoBehaviour
         _dañoActualGolpe = _dañoBaseGolpe;
     }
 }
-
