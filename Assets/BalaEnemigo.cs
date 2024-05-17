@@ -16,6 +16,7 @@ public class BalaEnemigo : MonoBehaviour
         if (other.TryGetComponent(out Jugador jugador))
         {
             jugador.PerderVida();
+            Destroy(gameObject);
         }
     }
 }
