@@ -9,7 +9,6 @@ public class PowerUpDaño : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Comprueba si el objeto con el que colisiona tiene el tag "Player"
         if (other.CompareTag("Jugador"))
         {
             // Obtiene el componente CombateCaC del jugador
@@ -20,7 +19,6 @@ public class PowerUpDaño : MonoBehaviour
             {
                 combate.AumentarDaño(_dañoMultiplicado, _duracion);
 
-                // Destruye el objeto power-up después de activarlo
                 Destroy(gameObject);
             }
         }

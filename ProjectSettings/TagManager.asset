@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Jugador
   - Enemigo
-  - Teleporter
   - Teletransportador
   layers:
   - Default
