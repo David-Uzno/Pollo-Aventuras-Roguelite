@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class BalaEnemigo : MonoBehaviour
 {
-    public float velocidad;
-    public int daño;
+    [SerializeField] private float _velocidad;
+    [SerializeField] private int _daño;
     
     void Update()
     {
-        transform.Translate(Time.deltaTime * velocidad * Vector2.right);
+        transform.Translate(Time.deltaTime * _velocidad * Vector2.right);
     }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.TryGetComponent(out Jugador jugador))
