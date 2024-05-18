@@ -15,7 +15,6 @@ public class CombateCaC : MonoBehaviour
     #region Unity Métodos
     private void Start()
     {
-        // Inicializa el daño actual al valor base
         _dañoActualGolpe = InicializarDaño(_dañoBaseGolpe);
     }
 
@@ -23,7 +22,6 @@ public class CombateCaC : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            // Realiza un golpe con el daño actual
             Golpe(_dañoActualGolpe);
         }
     }
@@ -41,12 +39,11 @@ public class CombateCaC : MonoBehaviour
         Collider2D[] objetos = Physics2D.OverlapCircleAll(_controladorGolpe.position, _radioGolpe);
         foreach (Collider2D colisionador in objetos)
         {
-            if (colisionador.CompareTag("Enemigo") || colisionador.CompareTag("EnemigoEspecial") || colisionador.CompareTag("Boss"))
+            if (colisionador.CompareTag("Enemigo"))
             {
                 BasicoEnemigo enemigo = colisionador.transform.GetComponent<BasicoEnemigo>();
                 if (enemigo != null)
                 {
-                    // Aplica el daño al enemigo si es detectado
                     enemigo.TomarDaño(daño);
                 }
             }

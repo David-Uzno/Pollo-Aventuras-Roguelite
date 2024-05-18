@@ -15,9 +15,18 @@ public class EnemigoEspecial : BasicoEnemigo
     public float tiempoEsperaDisparo;
     public float velocidadDisparo;
     public float velocidadRotacion;
-
-    
-    
+    public Color basico;
+    public SpriteRenderer sr;
+    IEnumerator damage()
+    {
+        sr.color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        sr.color = basico;
+    }
+    private void Start()
+    {
+        sr.color = basico;
+    }
     private void Update()
     {
         
