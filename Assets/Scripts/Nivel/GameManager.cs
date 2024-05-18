@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,18 +19,21 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        // Verificar si ya hay una instancia creada
         if (Instancia == null)
         {
-            // Si no hay una instancia, establecer esta como la instancia única
             Instancia = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            // Si ya hay una instancia, destruir este objeto y mostrar un mensaje de advertencia
             Debug.Log("¡Cuidado! Más de un ControladorJuego en la escena.");
             Destroy(gameObject);
         }
+    }
+
+    public void GanarJuego()
+    {
+        SceneManager.LoadScene("Ganar");
     }
 
     public void SumarPuntos(int puntosASumar)
@@ -49,6 +53,31 @@ public class GameManager : MonoBehaviour
     {
         _interfazUsuario.ActivarVida(_cantidadVidas);
         _cantidadVidas++;
+    }
+
+    public void IrAlMenu(string Menu)
+    {
+        if (string.IsNullOrEmpty(Menu))
+        {
+            Debug.LogError("El nombre de la escena no puede estar vacío o ser nulo.");
+            return;
+        }
+
+        if (!Application.CanStreamedLevelBeLoaded(Menu))
+        {
+            Debug.LogError("La escena '" + Menu + "' no existe o no está incluida en la lista de escenas de construcción.");
+            return;
+        }
+
+        try
+        {
+            SceneManager.LoadScene(Menu);
+            Debug.Log("Cargando la escena: " + Menu);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Error al cargar la escena '" + Menu + "': " + e.Message);
+        }
     }
 
     void FPS()

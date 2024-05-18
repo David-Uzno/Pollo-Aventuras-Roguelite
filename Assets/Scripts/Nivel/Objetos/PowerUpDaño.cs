@@ -11,10 +11,8 @@ public class PowerUpDaño : MonoBehaviour
     {
         if (other.CompareTag("Jugador"))
         {
-            // Obtiene el componente CombateCaC del jugador
             CombateCaC combate = other.GetComponent<CombateCaC>();
 
-            // Si el jugador tiene el componente CombateCaC, activa el power-up
             if (combate != null)
             {
                 combate.AumentarDaño(_dañoMultiplicado, _duracion);
