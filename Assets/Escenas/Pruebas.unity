@@ -20568,9 +20568,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 299411393}
     - target: {fileID: 578218593122876408, guid: 0ce4419d973e16f4d9473defda2fb9b4, type: 3}
+      propertyPath: "_da\xF1oSalto"
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 578218593122876408, guid: 0ce4419d973e16f4d9473defda2fb9b4, type: 3}
+      propertyPath: "_radioDa\xF1o"
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 578218593122876408, guid: 0ce4419d973e16f4d9473defda2fb9b4, type: 3}
       propertyPath: _spriteRenderer
       value: 
       objectReference: {fileID: 1147941112}
+    - target: {fileID: 578218593122876408, guid: 0ce4419d973e16f4d9473defda2fb9b4, type: 3}
+      propertyPath: _tiempoCargaSalto
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 578218593122876408, guid: 0ce4419d973e16f4d9473defda2fb9b4, type: 3}
+      propertyPath: _capaJugador.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 578218593122876408, guid: 0ce4419d973e16f4d9473defda2fb9b4, type: 3}
+      propertyPath: _coordenadasActivacion.x
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 578218593122876408, guid: 0ce4419d973e16f4d9473defda2fb9b4, type: 3}
+      propertyPath: _coordenadasActivacion.y
+      value: -53
+      objectReference: {fileID: 0}
     - target: {fileID: 4143887567801272997, guid: 0ce4419d973e16f4d9473defda2fb9b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 51.19
