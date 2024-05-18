@@ -6,8 +6,8 @@ public class Boss1 : BasicoEnemigo
     [SerializeField] private List<GameObject> _dropItems; 
     [SerializeField] private Transform jugador; 
     [SerializeField] private float tiempoCargaSalto; 
-    [SerializeField] private float radioDaño; 
-    [SerializeField] private float dañoSalto; 
+    [SerializeField] private float radioDaÃ±o; 
+    [SerializeField] private float daÃ±oSalto; 
     [SerializeField] private LayerMask capaJugador; 
 
     [SerializeField] private Vector2 coordenadasActivacion; 
@@ -16,14 +16,14 @@ public class Boss1 : BasicoEnemigo
     private bool estaCargandoSalto;
     private float tiempoUltimoSalto;
     private bool estaActivo;
-    public Color basico;
-    public SpriteRenderer sr;
-    IEnumerator damage()
+    /*public Color _colorBasico;
+    public SpriteRenderer _spriteRenderer;
+    IEnumerator Damage()
     {
-        sr.color = Color.white;
+        _spriteRenderer.color = Color.white;
         yield return new WaitForSeconds(0.1f);
-        sr.color = basico;
-    }
+        _spriteRenderer.color = _colorBasico;
+    }*/
 
     private void Start()
     {
@@ -32,7 +32,7 @@ public class Boss1 : BasicoEnemigo
             jugador = GameObject.FindGameObjectWithTag("Jugador").transform;
         }
         estaActivo = false;
-        sr.color = basico;
+        /*_spriteRenderer.color = _colorBasico;*/
     }
 
     private void Update()
@@ -74,15 +74,15 @@ public class Boss1 : BasicoEnemigo
 
         transform.position = (Vector2)transform.position + direccionSalto;
 
-        Collider2D[] objetosAfectados = Physics2D.OverlapCircleAll(transform.position, radioDaño, capaJugador);
+        Collider2D[] objetosAfectados = Physics2D.OverlapCircleAll(transform.position, radioDaÃ±o, capaJugador);
         foreach (Collider2D colisionador in objetosAfectados)
         {
         }
     }
 
-    public override void TomarDaño(float daño)
+    public override void TomarDaÃ±o(float daÃ±o)
     {
-        _vida -= daño;
+        _vida -= daÃ±o;
         if (_vida <= 0)
         {
             DropItem();
@@ -105,11 +105,8 @@ public class Boss1 : BasicoEnemigo
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, radioDaño);
+        Gizmos.DrawWireSphere(transform.position, radioDaÃ±o);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(coordenadasActivacion, rangoActivacion); 
     }
 }
-
-
-

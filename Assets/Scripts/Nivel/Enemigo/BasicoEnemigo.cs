@@ -4,21 +4,21 @@ using UnityEngine;
 
 public abstract class BasicoEnemigo : MonoBehaviour
 {
-    [SerializeField] public float _vida;
+    public float _vida;
     [SerializeField] private float _ataque;
     [SerializeField] private float _velocidad;
     [SerializeField] private List<GameObject> Recompensa = new List<GameObject>();
-    public Color basico;
-    public SpriteRenderer sr;
-    IEnumerator damage()
+    public Color _colorBasico;
+    public SpriteRenderer _spriteRenderer;
+    public IEnumerator Damage()
     {
-        sr.color = Color.white;
+        _spriteRenderer.color = Color.white;
         yield return new WaitForSeconds(0.1f);
-        sr.color = basico;
+        _spriteRenderer.color = _colorBasico;
     }
     private void Start()
     {
-        sr.color = basico;
+        _spriteRenderer.color = _colorBasico;
     }
     public abstract void TomarDaño(float daño);
     public abstract void DropItem();
