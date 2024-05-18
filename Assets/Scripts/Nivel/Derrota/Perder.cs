@@ -9,13 +9,13 @@ public class Perder : MonoBehaviour
     {
         if (string.IsNullOrEmpty(Menu))
         {
-            Debug.LogError("El nombre de la escena no puede estar vacÌo o ser nulo.");
+            Debug.LogError("El nombre de la escena no puede estar vac√≠o o ser nulo.");
             return;
         }
 
         if (!Application.CanStreamedLevelBeLoaded(Menu))
         {
-            Debug.LogError("La escena '" + Menu + "' no existe o no est· incluida en la lista de escenas de construcciÛn.");
+            Debug.LogError("La escena '" + Menu + "' no existe o no est√° incluida en la lista de escenas de construcci√≥n.");
             return;
         }
 
@@ -31,18 +31,15 @@ public class Perder : MonoBehaviour
         GameManager.Instancia.IrAlMenu("Menu");
     }
 
-
-
     public void VolverALv1()
+    {
+        try
         {
-            try
-            {
-                SceneManager.LoadScene("Pruebas");
-            }
-            catch (System.Exception e)
-            {
-                Debug.LogError("Error al cargar el nivel 1: " + e.Message);
-            }
+            SceneManager.LoadScene("Pruebas");
         }
-    
+        catch (System.Exception e)
+        {
+            Debug.LogError("Error al cargar el nivel 1: " + e.Message);
+        }
+    }
 }

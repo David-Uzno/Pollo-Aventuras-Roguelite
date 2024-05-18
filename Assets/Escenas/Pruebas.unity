@@ -20564,6 +20564,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 299411393}
     - target: {fileID: 578218593122876408, guid: 0ce4419d973e16f4d9473defda2fb9b4, type: 3}
+      propertyPath: _jugador
+      value: 
+      objectReference: {fileID: 299411393}
+    - target: {fileID: 578218593122876408, guid: 0ce4419d973e16f4d9473defda2fb9b4, type: 3}
       propertyPath: _spriteRenderer
       value: 
       objectReference: {fileID: 1147941112}
@@ -20609,7 +20613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8015492686454524997, guid: 0ce4419d973e16f4d9473defda2fb9b4, type: 3}
       propertyPath: m_Name
-      value: BossMapache
+      value: JefeMapache
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,21 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Boss1 : BasicoEnemigo
+public class Jefe : BasicoEnemigo
 {
     [SerializeField] private List<GameObject> _dropItems; 
-    [SerializeField] private Transform jugador; 
-    [SerializeField] private float tiempoCargaSalto; 
-    [SerializeField] private float radioDaño; 
-    [SerializeField] private float dañoSalto; 
-    [SerializeField] private LayerMask capaJugador; 
+    [SerializeField] private Transform _jugador; 
+    [SerializeField] private float _tiempoCargaSalto; 
+    [SerializeField] private float _radioDaño; 
+    [SerializeField] private float _dañoSalto; 
+    [SerializeField] private LayerMask _capaJugador; 
 
-    [SerializeField] private Vector2 coordenadasActivacion; 
-    [SerializeField] private float rangoActivacion = 1f; 
+    [SerializeField] private Vector2 _coordenadasActivacion; 
+    [SerializeField] private float _rangoActivacion = 1f; 
 
-    private bool estaCargandoSalto;
-    private float tiempoUltimoSalto;
-    private bool estaActivo;
+    private bool _estaCargandoSalto;
+    private float _tiempoUltimoSalto;
+    private bool _estaActivo;
     /*public Color _colorBasico;
     public SpriteRenderer _spriteRenderer;
     IEnumerator Damage()
@@ -27,22 +27,22 @@ public class Boss1 : BasicoEnemigo
 
     private void Start()
     {
-        if (jugador == null)
+        if (_jugador == null)
         {
-            jugador = GameObject.FindGameObjectWithTag("Jugador").transform;
+            _jugador = GameObject.FindGameObjectWithTag("Jugador").transform;
         }
-        estaActivo = false;
+        _estaActivo = false;
         /*_spriteRenderer.color = _colorBasico;*/
     }
 
     private void Update()
     {
-        if (!estaActivo && Vector2.Distance(jugador.position, coordenadasActivacion) <= rangoActivacion)
+        if (!_estaActivo && Vector2.Distance(_jugador.position, _coordenadasActivacion) <= _rangoActivacion)
         {
             ActivarBoss();
         }
 
-        if (estaActivo && !estaCargandoSalto && Time.time > tiempoUltimoSalto + tiempoCargaSalto)
+        if (_estaActivo && !_estaCargandoSalto && Time.time > _tiempoUltimoSalto + _tiempoCargaSalto)
         {
             StartCoroutine(CargarSalto());
         }
@@ -50,31 +50,31 @@ public class Boss1 : BasicoEnemigo
 
     private void ActivarBoss()
     {
-        estaActivo = true;
+        _estaActivo = true;
         gameObject.SetActive(true);
     }
 
     private IEnumerator CargarSalto()
     {
-        estaCargandoSalto = true;
+        _estaCargandoSalto = true;
 
-        yield return new WaitForSeconds(tiempoCargaSalto);
+        yield return new WaitForSeconds(_tiempoCargaSalto);
 
         RealizarSalto();
-        tiempoUltimoSalto = Time.time;
-        estaCargandoSalto = false;
+        _tiempoUltimoSalto = Time.time;
+        _estaCargandoSalto = false;
     }
 
     private void RealizarSalto()
     {
 
-        Vector2 direccionSalto = (jugador.position - transform.position).normalized;
+        Vector2 direccionSalto = (_jugador.position - transform.position).normalized;
         float velocidadSalto = 2f;
         direccionSalto *= velocidadSalto;
 
         transform.position = (Vector2)transform.position + direccionSalto;
 
-        Collider2D[] objetosAfectados = Physics2D.OverlapCircleAll(transform.position, radioDaño, capaJugador);
+        Collider2D[] objetosAfectados = Physics2D.OverlapCircleAll(transform.position, _radioDaño, _capaJugador);
         foreach (Collider2D colisionador in objetosAfectados)
         {
         }
@@ -105,8 +105,8 @@ public class Boss1 : BasicoEnemigo
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, radioDaño);
+        Gizmos.DrawWireSphere(transform.position, _radioDaño);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(coordenadasActivacion, rangoActivacion); 
+        Gizmos.DrawWireSphere(_coordenadasActivacion, _rangoActivacion); 
     }
 }
