@@ -8,18 +8,8 @@ public abstract class BasicoEnemigo : MonoBehaviour
     [SerializeField] private float _ataque;
     [SerializeField] private float _velocidad;
     [SerializeField] private List<GameObject> Recompensa = new List<GameObject>();
-    public Color _colorBasico;
-    public SpriteRenderer _spriteRenderer;
-    public IEnumerator Damage()
-    {
-        _spriteRenderer.color = Color.white;
-        yield return new WaitForSeconds(0.1f);
-        _spriteRenderer.color = _colorBasico;
-    }
-    private void Start()
-    {
-        _spriteRenderer.color = _colorBasico;
-    }
+    
+    
     public abstract void TomarDaño(float daño);
     public abstract void DropItem();
 

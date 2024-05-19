@@ -54,20 +54,16 @@ public class CombateCaC : MonoBehaviour
     #region Métodos de Power-Up
     public void AumentarDaño(float multiplicador, float duracion)
     {
-        // Inicia un power-up que aumenta el daño
         StartCoroutine(ActivarPowerUp(multiplicador, duracion));
     }
 
     private IEnumerator ActivarPowerUp(float multiplicador, float duracion)
     {
-        // Calcula y ajusta el nuevo daño con el multiplicador
         float dañoModificado = _dañoBaseGolpe * multiplicador;
         _dañoActualGolpe = AjustarDaño(dañoModificado, duracion);
 
-        // Espera la duración del power-up
         yield return new WaitForSeconds(duracion);
 
-        // Restaura el daño actual al valor base
         _dañoActualGolpe = _dañoBaseGolpe;
     }
     #endregion

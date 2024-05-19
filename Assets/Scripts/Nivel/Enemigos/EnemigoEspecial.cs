@@ -13,27 +13,9 @@ public class EnemigoEspecial : BasicoEnemigo
     public float tiempoEntreDisparos;
     public float tiempoUltimoDisparo;
     public float tiempoEsperaDisparo;
-    public float velocidadDisparo;
-    public float velocidadRotacion;
-    /*public Color basico;
-    public SpriteRenderer sr;
-    IEnumerator damage()
-    {
-        sr.color = Color.white;
-        yield return new WaitForSeconds(0.1f);
-        sr.color = basico;
-    }
-    private void Start()
-    {
-        sr.color = basico;
-    }*/
+    
     private void Update()
     {
-        
-        MoverControladorDisparo();
-        RotarControladorDisparo();
-
-     
         jugadorEnRango = Physics2D.Raycast(controladorDisparo.position, transform.right, distanciaLinea, capaJugador);
         if (jugadorEnRango)
         {
@@ -44,17 +26,7 @@ public class EnemigoEspecial : BasicoEnemigo
             }
         }
     }
-    private void MoverControladorDisparo()
-    {
-      
-        controladorDisparo.position += transform.right * velocidadDisparo * Time.deltaTime;
-    }
-    private void RotarControladorDisparo()
-    {
-        
-        controladorDisparo.Rotate(Vector3.forward, velocidadRotacion * Time.deltaTime);
-    }
-
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

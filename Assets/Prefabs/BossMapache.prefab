@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8015492686454524997}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 51.19, y: -52.59, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0}
   m_ConstrainProportionsScale: 0
@@ -100,18 +100,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _vida: 7
   _ataque: 1
-  _velocidad: 50
+  _velocidad: 100000
   Recompensa: []
   _dropItems: []
-  jugador: {fileID: 0}
-  tiempoCargaSalto: 2
-  "radioDa\xF1o": 1
-  "da\xF1oSalto": 1
-  capaJugador:
+  _jugador: {fileID: 0}
+  _tiempoCargaSalto: 1.5
+  "_radioDa\xF1o": 1
+  "_da\xF1oSalto": 1
+  _capaJugador:
     serializedVersion: 2
     m_Bits: 64
-  coordenadasActivacion: {x: 46, y: -53}
-  rangoActivacion: 10
+  _coordenadasActivacion: {x: 46, y: -53}
+  _rangoActivacion: 1
 --- !u!61 &2778818560786918118
 BoxCollider2D:
   m_ObjectHideFlags: 0

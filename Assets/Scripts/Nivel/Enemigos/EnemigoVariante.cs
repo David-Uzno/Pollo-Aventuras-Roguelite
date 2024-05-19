@@ -6,19 +6,7 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class EnemigoVariante : BasicoEnemigo
 {
     [SerializeField] private List<GameObject> _dropItems;
-    /*[SerializeField] private Color _colorBasico;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
     
-    IEnumerator Damage()
-    {
-        _spriteRenderer.color = Color.white;
-        yield return new WaitForSeconds(0.1f);
-        _spriteRenderer.color = _colorBasico;
-    }
-    private void Start()
-    {
-        _spriteRenderer.color = _colorBasico;
-    }*/
     public override void TomarDaño(float daño)
     {
         _vida -= daño;

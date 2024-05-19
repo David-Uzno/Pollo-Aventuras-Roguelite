@@ -16,14 +16,7 @@ public class Jefe : BasicoEnemigo
     private bool _estaCargandoSalto;
     private float _tiempoUltimoSalto;
     private bool _estaActivo;
-    /*public Color _colorBasico;
-    public SpriteRenderer _spriteRenderer;
-    IEnumerator Damage()
-    {
-        _spriteRenderer.color = Color.white;
-        yield return new WaitForSeconds(0.1f);
-        _spriteRenderer.color = _colorBasico;
-    }*/
+   
 
     private void Start()
     {
@@ -32,7 +25,7 @@ public class Jefe : BasicoEnemigo
             _jugador = GameObject.FindGameObjectWithTag("Jugador").transform;
         }
         _estaActivo = false;
-        /*_spriteRenderer.color = _colorBasico;*/
+       
     }
 
     private void Update()

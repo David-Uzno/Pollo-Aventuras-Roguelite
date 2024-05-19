@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2536455770259601801}
   - component: {fileID: -8692455044144742013}
   - component: {fileID: 284934308549411282}
+  - component: {fileID: 8628138153039832922}
   m_Layer: 0
   m_Name: DragoniteManco
   m_TagString: Enemigo
@@ -121,7 +122,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6
 --- !u!114 &-8692455044144742013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,13 +135,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5613a19aaace4247bd5d39e9cd34e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vida: 3
+  _vida: 1
   _ataque: 0
   _velocidad: 0
-  Recompensa: []
-  _vida: 3
+  Recompensa:
+  - {fileID: 0}
   _dropItems:
-  - {fileID: 1462721857261657782, guid: 43ed435842483f744ba0ccb801f90367, type: 3}
+  - {fileID: 0}
 --- !u!114 &284934308549411282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfcc31ae6ec8e049b888b166b662bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocidadMovimiento: 5
+  _velocidadMovimiento: 2
   _puntosPatrulla:
   - {fileID: 0}
   - {fileID: 0}
@@ -169,3 +170,24 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _distanciaMinima: 0.2
+--- !u!95 &8628138153039832922
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7182664188873052296}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6cfb18f1e2abf5e42924698c7e527e91, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
