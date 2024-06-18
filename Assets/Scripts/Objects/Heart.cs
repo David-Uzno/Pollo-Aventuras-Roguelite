@@ -9,11 +9,11 @@ public class Heart : MonoBehaviour
     public delegate void HeartCollected();
     public static event HeartCollected OnHeartCollected;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            other.GetComponent<Player>()?.RecoverLife(_recoveryAmount);
+            collision.GetComponent<Player>()?.RecoverLife(_recoveryAmount);
 
             NotifyHeartCollection();
 

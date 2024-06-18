@@ -9,9 +9,9 @@ public class Player : MonoBehaviour
     [Header("Life")]
     [SerializeField] private int _life = 3;
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private Color _flashColor = Color.red;
-    [SerializeField] private int _flashCount = 3;
-    [SerializeField] private float _flashDuration = 0.5f;
+    [SerializeField] private Color _damageFlashColor = Color.red;
+    [SerializeField] private int _damageFlashCount = 3;
+    [SerializeField] private float _damageFlashDuration = 0.75f;
     private Coroutine _flashCoroutine;
     private Color _originalColor;
 
@@ -126,13 +126,13 @@ public class Player : MonoBehaviour
 
     private IEnumerator FlashSprite()
     {
-        for (int i = 0; i < _flashCount; i++)
+        for (int i = 0; i < _damageFlashCount; i++)
         {
-            _spriteRenderer.color = _flashColor;
-            yield return new WaitForSeconds(_flashDuration / 2);
+            _spriteRenderer.color = _damageFlashColor;
+            yield return new WaitForSeconds(_damageFlashDuration / 2);
 
             _spriteRenderer.color = _originalColor;
-            yield return new WaitForSeconds(_flashDuration / 2);
+            yield return new WaitForSeconds(_damageFlashDuration / 2);
         }
 
         _spriteRenderer.color = _originalColor;
