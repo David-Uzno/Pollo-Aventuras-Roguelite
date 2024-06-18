@@ -34,14 +34,14 @@ public abstract class FatherEnemy : MonoBehaviour
     #region Drop
     private void DropItem()
     {
-        if (_dropConfig != null && _dropConfig.dropItems.Count > 0)
+        if (_dropConfig != null && _dropConfig.DropItems.Count > 0)
         {
-            foreach (var dropItem in _dropConfig.dropItems)
+            foreach (var dropItem in _dropConfig.DropItems)
             {
                 float chance = Random.value * 100;
-                if (chance < dropItem.dropChance)
+                if (chance < dropItem.DropChance)
                 {
-                    Instantiate(dropItem.item, transform.position, Quaternion.identity);
+                    Instantiate(dropItem.Item, transform.position, Quaternion.identity);
                     break;
                 }
             }

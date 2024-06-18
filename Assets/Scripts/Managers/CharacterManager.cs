@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
-    #region Variables
-    public List<Characters> _characters;
-    #endregion
+    public List<Characters> CharacterIndex;
 
-    #region Singleton
     public static CharacterManager Instance { get; private set; }
     private void Awake()
     {
@@ -23,5 +20,4 @@ public class CharacterManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    #endregion
 }

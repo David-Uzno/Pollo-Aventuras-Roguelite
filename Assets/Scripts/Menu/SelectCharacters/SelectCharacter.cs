@@ -7,53 +7,53 @@ using UnityEngine.SceneManagement;
 
 public class SelectCharacter : MonoBehaviour
 {
-    private int _index;
-    [SerializeField] private Image _imageCharacter;
+    private int _currentIndex;
+    [SerializeField] private Image _characterImage;
     private CharacterManager _characterManager;
 
     void Start()
     {
         _characterManager = CharacterManager.Instance;
 
-        _index = PlayerPrefs.GetInt("PlayerIndex");
-        ChangeScreen();
+        /*_currentIndex = PlayerPrefs.GetInt("PlayerIndex", 0);*/
 
-        if (_index > _characterManager._characters.Count - 1)
-        {
-            _index = 0;
-        }
+        UpdateCharacterDisplay();
     }
 
-    void ChangeScreen()
+    void UpdateCharacterDisplay()
     {
-        PlayerPrefs.SetInt("PlayerIndex", _index);
-        _imageCharacter.sprite = _characterManager._characters[_index]._image;
+        /*PlayerPrefs.SetInt("PlayerIndex", _currentIndex);*/
+        _characterImage.sprite = _characterManager.CharacterIndex[_currentIndex].Image;
     }
 
     public void NextCharacter()
     {
-        if(_index == _characterManager._characters.Count - 1)
+        // Circular al siguiente índice
+        if (_currentIndex == _characterManager.CharacterIndex.Count - 1)
         {
-            _index = 0;
+            _currentIndex = 0;
         }
         else
         {
-            _index += 1;
+            _currentIndex += 1;
         }
-        ChangeScreen();
+
+        UpdateCharacterDisplay();
     }
 
     public void PreviousCharacter()
     {
-        if(_index == 0)
+        // Circular al anterior índice
+        if (_currentIndex == 0)
         {
-            _index = _characterManager._characters.Count - 1;
+            _currentIndex = _characterManager.CharacterIndex.Count - 1;
         }
         else
         {
-            _index -= 1;
+            _currentIndex -= 1;
         }
-        ChangeScreen();
+         
+        UpdateCharacterDisplay();
     }
 
     public void StarGame()

@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEnemyDropConfig", menuName = "Enemy/DropConfig", order = 0)]
+[CreateAssetMenu(fileName = "NewEnemyDropConfig", menuName = "ScriptablesObjects/Enemies/DropConfig")]
 public class EnemyDropConfig : ScriptableObject
 {
     
     [System.Serializable] public class DropItem
     {
-        public GameObject item;
-        [Range(0, 100)] public float dropChance;
+        public GameObject Item;
+        [Range(0, 100)] public float DropChance;
     }
-    public List<DropItem> dropItems;
+    public List<DropItem> DropItems;
 }
