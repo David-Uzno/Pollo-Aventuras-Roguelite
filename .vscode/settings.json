@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "TP-2-POO.sln"
+    "dotnet.defaultSolution": "TP-POO.sln"
 }

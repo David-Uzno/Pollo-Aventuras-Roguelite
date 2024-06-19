@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 287cb09264c0dd24dbd0470f04dbc167, type: 3}
-  m_Name: NewEnemyDropConfig
+  m_Name: EnemyDropConfig
   m_EditorClassIdentifier: 
-  dropItems:
-  - item: {fileID: 1826074101656809743, guid: e2d143ecf6a22ce44a349648f1a02635, type: 3}
-    dropChance: 25
-  - item: {fileID: 767776708694996780, guid: 83b5d3f30576ba14cb2ffee03679e812, type: 3}
-    dropChance: 10
+  DropItems:
+  - Item: {fileID: 1826074101656809743, guid: e2d143ecf6a22ce44a349648f1a02635, type: 3}
+    DropChance: 20
+  - Item: {fileID: 767776708694996780, guid: 83b5d3f30576ba14cb2ffee03679e812, type: 3}
+    DropChance: 10

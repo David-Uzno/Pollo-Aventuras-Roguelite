@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // Asegura que _currentHeartCount y _playerLifes estén dentro de los límites establecidos.
+        // Asegura que _currentHeartCount y _playerLifes estén dentro de los límites establecidos
         _currentHeartCount = Mathf.Clamp(_currentHeartCount, _minHeartCount, _maxHeartCount);
         _playerLifes = Mathf.Clamp(_playerLifes, 1, _currentHeartCount * 2);
 
