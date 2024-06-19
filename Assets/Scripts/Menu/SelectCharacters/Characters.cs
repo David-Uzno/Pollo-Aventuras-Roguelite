@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewPlayer", menuName = "ScriptablesObjects/Characters")]
 public class Characters : ScriptableObject
 {
-    [SerializeField] GameObject _player;
+    public GameObject _player;
     public Sprite Image;
 }

@@ -15,20 +15,20 @@ public class SelectCharacter : MonoBehaviour
     {
         _characterManager = CharacterManager.Instance;
 
-        /*_currentIndex = PlayerPrefs.GetInt("PlayerIndex", 0);*/
+        _currentIndex = 0;
 
         UpdateCharacterDisplay();
     }
 
     void UpdateCharacterDisplay()
     {
-        /*PlayerPrefs.SetInt("PlayerIndex", _currentIndex);*/
+        PlayerPrefs.SetInt("PlayerIndex", _currentIndex);
         _characterImage.sprite = _characterManager.CharacterIndex[_currentIndex].Image;
     }
 
     public void NextCharacter()
     {
-        // Circular al siguiente índice
+        // Circular al siguiente Ã­ndice
         if (_currentIndex == _characterManager.CharacterIndex.Count - 1)
         {
             _currentIndex = 0;
@@ -43,7 +43,7 @@ public class SelectCharacter : MonoBehaviour
 
     public void PreviousCharacter()
     {
-        // Circular al anterior índice
+        // Circular al anterior Ã­ndice
         if (_currentIndex == 0)
         {
             _currentIndex = _characterManager.CharacterIndex.Count - 1;

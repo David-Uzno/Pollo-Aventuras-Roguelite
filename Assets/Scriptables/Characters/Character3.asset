@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917e5f9e0bcb4c149ac4169b3ac9a691, type: 3}
   m_Name: Character3
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  _image: {fileID: 21300000, guid: 3b8c06dbe23121142a612e89d58aec59, type: 3}
+  _player: {fileID: 5021440252569274685, guid: b75486a4c50996340a2da9e4e8ab1859, type: 3}
+  Image: {fileID: 21300000, guid: 3b8c06dbe23121142a612e89d58aec59, type: 3}

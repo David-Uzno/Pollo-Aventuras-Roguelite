@@ -748,7 +748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51f6b08f37106e428185b634fa16e19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characters:
+  CharacterIndex:
   - {fileID: 11400000, guid: 5c440510b6407514b991a2a68e8162c9, type: 2}
   - {fileID: 11400000, guid: 45006835f2b3cbc4ba23b1bc807b2b95, type: 2}
   - {fileID: 11400000, guid: 4cb8e10f25d68194e9adbc9fc8952a86, type: 2}

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Character1
   m_EditorClassIdentifier: 
   _player: {fileID: 8712103025209775062, guid: 99c2efe1770121b41a5de66c56e89959, type: 3}
-  _image: {fileID: 21300000, guid: 1ff1d2c192e2d464390d0d7b59195ce0, type: 3}
+  Image: {fileID: 21300000, guid: 1ff1d2c192e2d464390d0d7b59195ce0, type: 3}
