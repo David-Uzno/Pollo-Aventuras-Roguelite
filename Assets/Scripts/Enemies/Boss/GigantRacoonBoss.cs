@@ -15,11 +15,8 @@ public class GigantRacoonBoss : MonoBehaviour
     [SerializeField] private float _damageDuration = 0.05f;
     [SerializeField] private int _flashCount = 3;
 
-    [Header("Transforms References")]
-    [SerializeField] private Transform _transform;
-    [SerializeField] private Transform _playerTransform;
-
     [Header("Jump")]
+    [SerializeField] private Transform _playerTransform;
     [SerializeField] private float _jumpHeight = 10f;
     [SerializeField] private float _jumpDuration = 0.5f;
 
@@ -40,6 +37,20 @@ public class GigantRacoonBoss : MonoBehaviour
     #region Unity Methods
     private void Start()
     {
+        if (_playerTransform == null)
+        {
+            GameObject playerObject = GameObject.FindWithTag("Player");
+            if (playerObject != null)
+            {
+                _playerTransform = playerObject.transform;
+                Debug.LogWarning($"{nameof(_playerTransform)} no estaba referenciado. Se buscó y asignó un GameObject con el tag 'Player'.");
+            }
+            else
+            {
+                Debug.LogWarning("No se encontró ningún GameObject con el tag 'Player'.");
+            }
+        }
+
         ScheduleAndJump();
     }
 
@@ -68,7 +79,7 @@ public class GigantRacoonBoss : MonoBehaviour
         {
             yield return new WaitForSeconds(_delayAfterJumpSound);
 
-            Vector3 startPosition = _transform.position;
+            Vector3 startPosition = transform.position;
             Vector3 endPosition = startPosition + Vector3.up * _jumpHeight;
 
             // Transición Y Suave con Vector3.Lerp
@@ -92,20 +103,20 @@ public class GigantRacoonBoss : MonoBehaviour
 
         while (timeElapsed < duration)
         {
-            _transform.position = Vector3.Lerp(startPosition, endPosition, timeElapsed / duration);
+            transform.position = Vector3.Lerp(startPosition, endPosition, timeElapsed / duration);
             timeElapsed += Time.deltaTime;
             yield return null;
         }
 
-        _transform.position = endPosition;
+        transform.position = endPosition;
         _animator.SetBool("Jump", false);
     }
 
     private void AlignWithPlayerX()
     {
-        Vector3 newPosition = _transform.position;
+        Vector3 newPosition = transform.position;
         newPosition.x = _playerTransform.position.x;
-        _transform.position = newPosition;
+        transform.position = newPosition;
     }
 
     private void AlignAndDescend()
@@ -118,7 +129,7 @@ public class GigantRacoonBoss : MonoBehaviour
     {
         yield return new WaitForSeconds(_delayAfterJumpSound);
 
-        Vector3 startPosition = _transform.position;
+        Vector3 startPosition = transform.position;
         Vector3 endPosition = startPosition;
         endPosition.y = _playerTransform.position.y;
 
