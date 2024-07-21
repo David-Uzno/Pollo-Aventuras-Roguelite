@@ -173,3 +173,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _invincibleColor: {r: 0, g: 1, b: 1, a: 1}
   _invincibilityDuration: 4.5
+  _renderTest: {fileID: 0}

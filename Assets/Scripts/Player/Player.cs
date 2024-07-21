@@ -13,7 +13,8 @@ public class Player : MonoBehaviour
     [SerializeField] private int _damageFlashCount = 3;
     [SerializeField] private float _damageFlashDuration = 0.75f;
     private Coroutine _flashCoroutine;
-    private Color _originalColor;
+    public Color _originalColor;
+    private Color _currentColor;
 
     [Header("Movement")]
     [SerializeField] private Rigidbody2D _RB;
@@ -21,6 +22,9 @@ public class Player : MonoBehaviour
 
     [Header("Other Components")]
     [SerializeField] private Animator _animator;
+
+    private bool _isInvincible = false;
+    private bool _isFlashing = false;
     #endregion
 
     #region Unity Methods
@@ -29,11 +33,12 @@ public class Player : MonoBehaviour
         if (_spriteRenderer == null)
         {
             Debug.LogError("¡SpriteRenderer no está asignado!");
+            enabled = false;
+            return;
         }
-        else
-        {
-            _originalColor = _spriteRenderer.color;
-        }
+
+        _originalColor = _spriteRenderer.color;
+        _currentColor = _originalColor;
 
         if (_animator != null)
         {
@@ -48,7 +53,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (gameObject.CompareTag("Player") && collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy"))
         {
             LoseLife();
         }
@@ -62,11 +67,9 @@ public class Player : MonoBehaviour
         float movementVertical = Input.GetAxis("Vertical");
         Vector2 movement = new Vector2(movementHorizontal, movementVertical);
 
-        // Move the Player
         _RB.velocity = movement * _speed;
         HandleRotation(movementHorizontal);
 
-        // Handle Animations
         if (_animator != null)
         {
             UpdateAnimations(movementHorizontal, movementVertical);
@@ -95,7 +98,6 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Life
-
     public void RecoverLife(int amount)
     {
         int maxLife = GameManager.Instance.GetMaxLife();
@@ -109,6 +111,8 @@ public class Player : MonoBehaviour
 
     public void LoseLife()
     {
+        if (_isInvincible) return;
+
         _life--;
         if (_flashCoroutine != null)
         {
@@ -116,7 +120,7 @@ public class Player : MonoBehaviour
         }
         GameManager.Instance.LoseLife();
 
-        _flashCoroutine = StartCoroutine(FlashSprite());
+        _flashCoroutine = StartCoroutine(FlashSpriteDamage());
 
         if (_life <= 0)
         {
@@ -124,18 +128,54 @@ public class Player : MonoBehaviour
         }
     }
 
-    private IEnumerator FlashSprite()
+    private IEnumerator FlashSpriteDamage()
     {
+        _isFlashing = true;
         for (int i = 0; i < _damageFlashCount; i++)
         {
-            _spriteRenderer.color = _damageFlashColor;
+            if (!_isInvincible)
+            {
+                SetPlayerColor(_damageFlashColor);
+            }
             yield return new WaitForSeconds(_damageFlashDuration / 2);
 
-            _spriteRenderer.color = _originalColor;
+            if (!_isInvincible)
+            {
+                SetPlayerColor(_originalColor);
+            }
             yield return new WaitForSeconds(_damageFlashDuration / 2);
         }
+        _isFlashing = false;
+        if (!_isInvincible)
+        {
+            SetPlayerColor(_originalColor);
+        }
+    }
 
-        _spriteRenderer.color = _originalColor;
+    private void SetPlayerColor(Color color)
+    {
+        _spriteRenderer.color = color;
+    }
+
+    public void SetInvincibility(bool isInvincible, Color invincibleColor)
+    {
+        _isInvincible = isInvincible;
+
+        if (isInvincible)
+        {
+            SetPlayerColor(invincibleColor);
+        }
+        else
+        {
+            if (_isFlashing)
+            {
+                SetPlayerColor(_damageFlashColor);
+            }
+            else
+            {
+                SetPlayerColor(_originalColor);
+            }
+        }
     }
     #endregion
 }

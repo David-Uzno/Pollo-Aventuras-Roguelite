@@ -11,58 +11,48 @@ public class Invincibility : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.tag = "Untagged";
-
-            SpriteRenderer playerSpriteRenderer = collision.gameObject.GetComponent<SpriteRenderer>();
-            if (playerSpriteRenderer != null)
+            Player player = collision.gameObject.GetComponent<Player>();
+            if (player != null)
             {
-                // Cambiar el Color del Jugador
-                playerSpriteRenderer.color = _invincibleColor;
+                // Activar invencibilidad
+                player.SetInvincibility(true, _invincibleColor);
+
+                // Crear GameObject temporal
+                GameObject tempObject = new GameObject("TempInvincibility");
+                TempInvincibility tempScript = tempObject.AddComponent<TempInvincibility>();
+                tempScript.Initialize(player, _invincibilityDuration);
+
+                // Destruir GameObject Invincibility
+                Destroy(gameObject);
             }
-
-
-            // Crear GameObject Temporal
-            GameObject tempObject = new GameObject("TempObject");
-            TempObjectScript tempScript = tempObject.AddComponent<TempObjectScript>();
-            tempScript.Initialize(collision.gameObject, _invincibilityDuration, _invincibleColor);
-
-            // Destruir el GameObject Invincibility
-            Destroy(gameObject);
         }
     }
 }
 
-public class TempObjectScript : MonoBehaviour
+public class TempInvincibility : MonoBehaviour
 {
-    private GameObject _player;
+    private Player _player;
     private float _duration;
-    private Color _originalColor;
 
-    public void Initialize(GameObject player, float duration, Color invincibleColor)
+    public void Initialize(Player player, float duration)
     {
         _player = player;
         _duration = duration;
-        _originalColor = player.GetComponent<SpriteRenderer>().color;
 
-        // Cambiar el Color del Jugador
-        player.GetComponent<SpriteRenderer>().color = invincibleColor;
-
-        StartCoroutine(RestorePlayerColorAfterDelay());
+        StartCoroutine(RestorePlayerAfterDelay());
     }
 
-    private IEnumerator RestorePlayerColorAfterDelay()
+    private IEnumerator RestorePlayerAfterDelay()
     {
         yield return new WaitForSeconds(_duration);
 
         if (_player != null)
         {
-            // Restaurar el Color Original del Jugador
-            _player.GetComponent<SpriteRenderer>().color = _originalColor;
-            // Restaurar el Tag Original del Jugador
-            _player.tag = "Player";
+            // Desactivar invencibilidad
+            _player.SetInvincibility(false, _player._originalColor);
         }
 
-        // Destruir el GameObject Temporal
+        // Destruir GameObject temporal
         Destroy(gameObject);
     }
 }
