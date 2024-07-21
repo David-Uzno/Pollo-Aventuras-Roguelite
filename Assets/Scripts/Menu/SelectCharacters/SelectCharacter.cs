@@ -9,27 +9,27 @@ public class SelectCharacter : MonoBehaviour
 {
     private int _currentIndex;
     [SerializeField] private Image _characterImage;
-    private CharacterManager _characterManager;
+    [SerializeField] private CharacterData _characterData;
 
     void Start()
     {
-        _characterManager = CharacterManager.Instance;
-
         _currentIndex = 0;
-
         UpdateCharacterDisplay();
     }
 
     void UpdateCharacterDisplay()
     {
         PlayerPrefs.SetInt("PlayerIndex", _currentIndex);
-        _characterImage.sprite = _characterManager.CharacterIndex[_currentIndex].Image;
+        if (_characterData != null && _characterData.Characters.Count > 0)
+        {
+            _characterImage.sprite = _characterData.Characters[_currentIndex].Image;
+        }
     }
 
     public void NextCharacter()
     {
         // Circular al siguiente índice
-        if (_currentIndex == _characterManager.CharacterIndex.Count - 1)
+        if (_currentIndex == _characterData.Characters.Count - 1)
         {
             _currentIndex = 0;
         }
@@ -46,17 +46,17 @@ public class SelectCharacter : MonoBehaviour
         // Circular al anterior índice
         if (_currentIndex == 0)
         {
-            _currentIndex = _characterManager.CharacterIndex.Count - 1;
+            _currentIndex = _characterData.Characters.Count - 1;
         }
         else
         {
             _currentIndex -= 1;
         }
-         
+
         UpdateCharacterDisplay();
     }
 
-    public void StarGame()
+    public void StartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

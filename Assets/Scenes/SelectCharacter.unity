@@ -377,6 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterImage: {fileID: 274806039}
+  _characterData: {fileID: 11400000, guid: 5c440510b6407514b991a2a68e8162c9, type: 2}
 --- !u!1 &274806037
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,54 +720,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427615227}
   m_CullTransparentMesh: 1
---- !u!1 &430853533
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 430853535}
-  - component: {fileID: 430853534}
-  m_Layer: 0
-  m_Name: CharacterManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &430853534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 430853533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d51f6b08f37106e428185b634fa16e19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CharacterIndex:
-  - {fileID: 11400000, guid: 5c440510b6407514b991a2a68e8162c9, type: 2}
-  - {fileID: 11400000, guid: 45006835f2b3cbc4ba23b1bc807b2b95, type: 2}
-  - {fileID: 11400000, guid: 4cb8e10f25d68194e9adbc9fc8952a86, type: 2}
---- !u!4 &430853535
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 430853533}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &976660377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,7 +1065,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 168685448}
         m_TargetAssemblyTypeName: SelectCharacter, Assembly-CSharp
-        m_MethodName: StarGame
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1830,5 +1783,4 @@ SceneRoots:
   - {fileID: 976660380}
   - {fileID: 1116730909}
   - {fileID: 168685447}
-  - {fileID: 430853535}
   - {fileID: 1506829928}

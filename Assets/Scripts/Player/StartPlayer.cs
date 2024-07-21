@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StartPlayer : MonoBehaviour
 {
-    [SerializeField] GameObject _prefabDefault;
+    [SerializeField] private CharacterData _characterData;
 
     void Start()
     {
@@ -20,25 +20,25 @@ public class StartPlayer : MonoBehaviour
         int _indexPlayer = PlayerPrefs.GetInt("PlayerIndex");
         GameObject newParent;
 
-        if (CharacterManager.Instance != null && _indexPlayer < CharacterManager.Instance.CharacterIndex.Count && _indexPlayer > 0)
+        if (_characterData != null && _indexPlayer < _characterData.Characters.Count && _indexPlayer >= 0)
         {
-            newParent = Instantiate(CharacterManager.Instance.CharacterIndex[_indexPlayer]._player);
+            newParent = Instantiate(_characterData.Characters[_indexPlayer]._player);
         }
         else
         {
-            newParent = Instantiate(_prefabDefault);
+            newParent = Instantiate(_characterData.Characters[0]._player);
 
-            if (CharacterManager.Instance == null)
+            if (_characterData == null)
             {
-                Debug.LogWarning($"CharacterManager no está en la escena. Usando prefab por defecto para el jugador.");
+                Debug.LogWarning("Lista de CharacterData no está asignada. Usando prefab por defecto para el jugador.");
             }
-            else if (_indexPlayer < 0 || _indexPlayer > CharacterManager.Instance.CharacterIndex.Count)
+            else if (_indexPlayer < 0 || _indexPlayer >= _characterData.Characters.Count)
             {
-                Debug.LogWarning($"Índice fuera de rango. Usando prefab por defecto para el jugador.");
+                Debug.LogWarning("Índice fuera de rango. Usando prefab por defecto para el jugador.");
             }
             else
             {
-                Debug.LogWarning($"Error. Usando prefab por defecto para el jugador.");
+                Debug.LogWarning("Error. Usando prefab por defecto para el jugador.");
             }
         }
 

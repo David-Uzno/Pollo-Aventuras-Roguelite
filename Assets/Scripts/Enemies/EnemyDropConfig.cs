@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewEnemyDropConfig", menuName = "ScriptablesObjects/Enemies/DropConfig")]
 public class EnemyDropConfig : ScriptableObject
 {
-    
     [System.Serializable] public class DropItem
     {
         public GameObject Item;

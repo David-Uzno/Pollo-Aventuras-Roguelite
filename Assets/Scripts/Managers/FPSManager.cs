@@ -29,7 +29,7 @@ public class FPSManager : MonoBehaviour
     #region Unity Methods
     private void Start()
     {
-        // Establece el límite de FPS
+        // Establece límite de FPS
         Application.targetFrameRate = _limitFPS;
     }
 

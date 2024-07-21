@@ -3928,6 +3928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabDefault: {fileID: 8712103025209775062, guid: 99c2efe1770121b41a5de66c56e89959, type: 3}
+  _characterData: {fileID: 11400000, guid: 5c440510b6407514b991a2a68e8162c9, type: 2}
 --- !u!4 &523788061
 Transform:
   m_ObjectHideFlags: 0
