@@ -22,13 +22,13 @@ public class GameMenu : MonoBehaviour
         {
             Time.timeScale = 0;
             _pausePanel.SetActive(true);
-            Application.targetFrameRate = 60;
+            Application.targetFrameRate = 30;
         }
         else
         {
             Time.timeScale = 1;
             _pausePanel.SetActive(false);
-            Application.targetFrameRate = -1;
+            Application.targetFrameRate = 120;
         }
     }
 }
