@@ -1,30 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     #region Variables
     [Header("Lifes")]
-    [SerializeField] Image[] _heartImages;
-    [SerializeField] Sprite[] _heartStatuses;
-    [SerializeField] int _currentHeartCount;
-    [SerializeField] int _playerLifes = 6;
+    [SerializeField] private Image[] _heartImages;
+    [SerializeField] private Sprite[] _heartStatuses;
+    [SerializeField] private int _currentHeartCount;
+    [SerializeField] private int _playerLifes = 6;
     static int _minHeartCount = 3;
     static int _maxHeartCount = 5;
     private int _maxLifeMultiplier = 2;
+
+    [Header("Auto-Destroy")]
+    [SerializeField] private List<SceneAsset> scenesToDestroyAssets;
+    private List<string> scenesToDestroyNames = new List<string>();
     #endregion
 
     #region Singleton
     public static GameManager Instance { get; private set; }
+
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            ConvertSceneAssetsToNames();
         }
         else
         {
@@ -32,7 +39,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        CheckScene();
+        CheckSceneDelete();
     }
     #endregion
 
@@ -40,32 +47,48 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         Heart.OnHeartCollected += UpdateHeartsCurrents;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable()
     {
         Heart.OnHeartCollected -= UpdateHeartsCurrents;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Start()
     {
-        // Asegura que _currentHeartCount y _playerLifes estén dentro de los límites establecidos
         _currentHeartCount = Mathf.Clamp(_currentHeartCount, _minHeartCount, _maxHeartCount);
         _playerLifes = Mathf.Clamp(_playerLifes, 1, _currentHeartCount * 2);
-
-        // Asignación de maxLifeMultiplier al número de elementos de _heartStatuses
         _maxLifeMultiplier = Mathf.Max(0, _heartStatuses.Length - 1);
-
-        // Actualización de corazones en el HUD
         UpdateHeartsCurrents();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Verificar escena actual después de cargar
+        CheckSceneDelete();
     }
     #endregion
 
     #region Scenes
-    public void CheckScene()
+    private void ConvertSceneAssetsToNames()
     {
+        scenesToDestroyNames = new List<string>();
+        foreach (var sceneAsset in scenesToDestroyAssets)
+        {
+            if (sceneAsset != null)
+            {
+                scenesToDestroyNames.Add(sceneAsset.name);
+            }
+        }
+    }
+
+    public void CheckSceneDelete()
+    {
+        // Eliminar GameManager si la escena actual está en la lista
         string currentSceneName = SceneManager.GetActiveScene().name;
-        if (currentSceneName == "Menu" || currentSceneName == "Winner" || currentSceneName == "GameOver")
+        if (scenesToDestroyNames.Contains(currentSceneName))
         {
             Destroy(gameObject);
         }
@@ -86,15 +109,14 @@ public class GameManager : MonoBehaviour
         {
             if (i < _currentHeartCount)
             {
-                // Actualiza el sprite del corazón según la vida restante
+                // Actualizar sprites de corazones según la vida restante
                 _heartImages[i].enabled = true;
                 _heartImages[i].sprite = GetStatusHearts(lifePointsRemaining);
-                // Reducción para el próximo corazón
                 lifePointsRemaining -= _maxLifeMultiplier;
             }
             else
             {
-                // Desactiva corazones adicionales
+                // Desactivar corazones adicionales
                 _heartImages[i].enabled = false;
             }
         }
@@ -102,9 +124,8 @@ public class GameManager : MonoBehaviour
 
     private Sprite GetStatusHearts(int lifePoints)
     {
-        // Limita el índice para evitar desbordamientos.
+        // Obtener el sprite correspondiente al estado actual de los corazones
         int statusIndex = Mathf.Clamp(lifePoints, 0, _heartStatuses.Length - 1);
-        // Devuelve el sprite correspondiente al estado actual de los corazones.
         return _heartStatuses[statusIndex];
     }
 
@@ -117,7 +138,6 @@ public class GameManager : MonoBehaviour
     public void RecoverLife(int amount)
     {
         int maxLife = GetMaxLife();
-
         _playerLifes = Mathf.Min(_playerLifes + amount, maxLife);
         UpdateHeartsCurrents();
     }

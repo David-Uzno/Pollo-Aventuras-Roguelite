@@ -3927,7 +3927,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5757e70db0f3e47a4cb7dec9de8b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabDefault: {fileID: 8712103025209775062, guid: 99c2efe1770121b41a5de66c56e89959, type: 3}
   _characterData: {fileID: 11400000, guid: 5c440510b6407514b991a2a68e8162c9, type: 2}
 --- !u!4 &523788061
 Transform:
@@ -16402,6 +16401,12 @@ MonoBehaviour:
   - {fileID: 318612031, guid: 276d7769a025d1d49b8b1f83568138bc, type: 3}
   _currentHeartCount: 3
   _playerLifes: 6
+  scenesToDestroyAssets:
+  - {fileID: 102900000, guid: d1baf4f1f7c14a74a918147b6b89d3cf, type: 3}
+  - {fileID: 102900000, guid: 6bdbc09187b5d8d46bad23a4c1cc6157, type: 3}
+  - {fileID: 102900000, guid: bb15a74963c1abe43ab9cc2553f651ec, type: 3}
+  - {fileID: 102900000, guid: 1a92ccd608cbc1342a87ea4a657ddd36, type: 3}
+  - {fileID: 102900000, guid: 895efcc82bb1f9e4a922fae8310f63de, type: 3}
 --- !u!4 &2024446232
 Transform:
   m_ObjectHideFlags: 0
