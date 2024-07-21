@@ -24,7 +24,6 @@ public class GameMenu : MonoBehaviour
             _pausePanel.SetActive(true);
             Application.targetFrameRate = 60;
         }
-
         else
         {
             Time.timeScale = 1;

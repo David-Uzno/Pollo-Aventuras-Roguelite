@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     static int _maxHeartCount = 5;
     private int _maxLifeMultiplier = 2;
 
+    [Header("Options")]
+    [SerializeField] private bool _activePause;
+    [SerializeField] private GameObject _pause;
+
     [Header("Auto-Destroy")]
     [SerializeField] private List<SceneAsset> scenesToDestroyAssets;
     private List<string> scenesToDestroyNames = new List<string>();
@@ -58,16 +62,37 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        // Asegura que _currentHeartCount y _playerLifes estén dentro de los límites establecidos
         _currentHeartCount = Mathf.Clamp(_currentHeartCount, _minHeartCount, _maxHeartCount);
         _playerLifes = Mathf.Clamp(_playerLifes, 1, _currentHeartCount * 2);
+
+        // Asignación de maxLifeMultiplier al número de elementos de _heartStatuses
         _maxLifeMultiplier = Mathf.Max(0, _heartStatuses.Length - 1);
+        
+        // Actualización de corazones en el HUD
         UpdateHeartsCurrents();
+
+        Pause();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Verificar escena actual después de cargar
         CheckSceneDelete();
+    }
+    #endregion
+
+    #region Options
+    private void Pause()
+    {
+        if (_activePause)
+        {
+            _pause.SetActive(true);
+        }
+        else
+        {
+            _pause.SetActive(false);
+        }
     }
     #endregion
 
