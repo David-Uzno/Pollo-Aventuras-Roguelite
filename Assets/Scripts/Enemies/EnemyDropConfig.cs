@@ -8,7 +8,7 @@ public class EnemyDropConfig : ScriptableObject
     [System.Serializable] public class DropItem
     {
         public GameObject Item;
-        [Range(0, 100)] public float DropChance;
+        [Range(0, 100)] public float Chance;
     }
     public List<DropItem> DropItems;
 }

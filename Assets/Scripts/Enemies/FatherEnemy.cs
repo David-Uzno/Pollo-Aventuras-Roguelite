@@ -39,7 +39,7 @@ public abstract class FatherEnemy : MonoBehaviour
             foreach (var dropItem in _dropConfig.DropItems)
             {
                 float chance = Random.value * 100;
-                if (chance < dropItem.DropChance)
+                if (chance < dropItem.Chance)
                 {
                     Instantiate(dropItem.Item, transform.position, Quaternion.identity);
                     break;
