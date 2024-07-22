@@ -2,29 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Heart : MonoBehaviour
+public class Heart : FatherObject
 {
     [SerializeField] private int _recoveryAmount = 1;
 
     public delegate void HeartCollected();
     public static event HeartCollected OnHeartCollected;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void ExecuteAction(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        Player player = collision.GetComponent<Player>();
+        if (player != null)
         {
-            collision.GetComponent<Player>()?.RecoverLife(_recoveryAmount);
-
-            NotifyHeartCollection();
-
-            Destroy(gameObject);
+            player.RecoverLife(_recoveryAmount);
         }
+        NotifyHeartCollection();
     }
+
     private void NotifyHeartCollection()
     {
-        if (OnHeartCollected != null)
-        {
-            OnHeartCollected.Invoke();
-        }
+        OnHeartCollected?.Invoke();
     }
 }

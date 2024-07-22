@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Invincibility : MonoBehaviour
+public class Invincibility : FatherObject
 {
     [SerializeField] private Color _invincibleColor = Color.cyan;
     [SerializeField] private float _invincibilityDuration = 5f;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void ExecuteAction(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -21,9 +21,6 @@ public class Invincibility : MonoBehaviour
                 GameObject tempObject = new GameObject("TempInvincibility");
                 TempInvincibility tempScript = tempObject.AddComponent<TempInvincibility>();
                 tempScript.Initialize(player, _invincibilityDuration);
-
-                // Destruir GameObject Invincibility
-                Destroy(gameObject);
             }
         }
     }

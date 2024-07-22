@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class Coin : FatherObject
 {
     private MoneyCounter _counterMoney;
 
@@ -30,7 +30,7 @@ public class Coin : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void ExecuteAction(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -51,8 +51,6 @@ public class Coin : MonoBehaviour
             {
                 Debug.LogWarning("MoneyCounter no está asignado en Coin.");
             }
-
-            Destroy(gameObject);
         }
     }
 }
