@@ -9,6 +9,7 @@ public class Shoot : MonoBehaviour
     [SerializeField] PlayerInput _playerInput;
     [SerializeField] Transform _shootingControl;
     [SerializeField] Transform _bullet;
+    [SerializeField] RectTransform _virtualCursor;
 
     [Header("Mouse")]
     Vector3 _objetive;
@@ -27,27 +28,36 @@ public class Shoot : MonoBehaviour
 
     private void Update()
     {
+        UpdateAim();
         Fire();
-        Mouse();
     }
     #endregion
 
     #region Mouse
-    private void Mouse()
+    private void UpdateAim()
     {
-        // Posición del Mouse
-        Vector2 mousePosition = _playerInput.actions["Aim"].ReadValue<Vector2>();
+        if (_virtualCursor != null)
+        {
+            // Usar la posición del Virtual Cursor
+            Vector2 cursorScreenPosition = _virtualCursor.position;
+            _objetive = _mainCamera.ScreenToWorldPoint(new Vector3(cursorScreenPosition.x, cursorScreenPosition.y, _mainCamera.nearClipPlane));
+        }
+        else
+        {
+            // Posición del Mouse
+            Vector2 mousePosition = _playerInput.actions["Aim"].ReadValue<Vector2>();
 
-        // Convertir la Posición del Mouse a Coordenadas del Mundo
-        _objetive = _mainCamera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, _mainCamera.nearClipPlane));
+            // Convertir la Posición del Mouse a Coordenadas del Mundo
+            _objetive = _mainCamera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, _mainCamera.nearClipPlane));
 
-        // Posición Actual del Mouse
-        _objetive = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            // Posición Actual del Mouse
+            _objetive = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        }
 
-        // Grados Entre GameObject y Mouse
-        float AnguleDegress = Mathf.Atan2(_objetive.y - transform.position.y, _objetive.x - transform.position.x) * Mathf.Rad2Deg - 90;
+        // Grados Entre GameObject y Objetivo
+        float angleDegrees = Mathf.Atan2(_objetive.y - transform.position.y, _objetive.x - transform.position.x) * Mathf.Rad2Deg - 90;
         // Rotación
-        transform.rotation = Quaternion.Euler(0, 0, AnguleDegress);
+        transform.rotation = Quaternion.Euler(0, 0, angleDegrees);
     }
     #endregion
 
@@ -56,13 +66,13 @@ public class Shoot : MonoBehaviour
     {
         if (_playerInput.actions["Shoot"].ReadValue<float>() > 0)
         {
-            //Condición de Cooldown
+            // Condición de Cooldown
             if (Time.time > _shotTime)
             {
                 // Instancia de la Bala
                 Instantiate(_bullet, _shootingControl.position, _shootingControl.rotation);
 
-                //Tiempo de Cooldown
+                // Tiempo de Cooldown
                 _shotTime = Time.time + _shotCooldown;
             }
         }

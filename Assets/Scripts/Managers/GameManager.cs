@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
     [Header("Options")]
     [SerializeField] private bool _activePause;
     [SerializeField] private GameObject _pause;
+    [SerializeField] private bool _activeVirtualCursor;
+    [SerializeField] private GameObject _virtualCursor;
+
+    [Header("Virtual Cursor")]
+    
 
     [Header("Auto-Destroy")]
     [SerializeField] private List<SceneAsset> scenesToDestroyAssets;
@@ -60,6 +65,12 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Verificar escena actual después de cargar
+        CheckSceneDelete();
+    }
+
     private void Start()
     {
         // Asegura que _currentHeartCount y _playerLifes estén dentro de los límites establecidos
@@ -68,22 +79,16 @@ public class GameManager : MonoBehaviour
 
         // Asignación de maxLifeMultiplier al número de elementos de _heartStatuses
         _maxLifeMultiplier = Mathf.Max(0, _heartStatuses.Length - 1);
-        
+
         // Actualización de corazones en el HUD
         UpdateHeartsCurrents();
 
-        Pause();
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        // Verificar escena actual después de cargar
-        CheckSceneDelete();
+        Options();
     }
     #endregion
 
     #region Options
-    private void Pause()
+    private void Options()
     {
         if (_activePause)
         {
@@ -92,6 +97,15 @@ public class GameManager : MonoBehaviour
         else
         {
             _pause.SetActive(false);
+        }
+
+        if (_activeVirtualCursor)
+        {
+            _virtualCursor.SetActive(true);
+        }
+        else
+        {
+            _virtualCursor.SetActive(false);
         }
     }
     #endregion
