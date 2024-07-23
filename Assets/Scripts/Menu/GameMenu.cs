@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameMenu : MonoBehaviour
 {
+    [SerializeField] PlayerInput _playerInput;
     [SerializeField] GameObject _pausePanel;
     bool _isGamePaused = false;
     
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(_playerInput.actions["Pause"].WasPressedThisFrame())
         {
             _isGamePaused = !_isGamePaused;
             PauseGame();

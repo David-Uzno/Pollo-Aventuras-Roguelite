@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
     #region Variables
+    [Header("Movement")]
+    [SerializeField] PlayerInput _playerInput;
+    [SerializeField] private Rigidbody2D _RB;
+    [SerializeField] private float _speed = 5f;
+    
     [Header("Life")]
     [SerializeField] private int _life = 3;
     [SerializeField] private SpriteRenderer _spriteRenderer;
@@ -15,10 +21,6 @@ public class Player : MonoBehaviour
     private Coroutine _flashCoroutine;
     public Color _originalColor;
     private Color _currentColor;
-
-    [Header("Movement")]
-    [SerializeField] private Rigidbody2D _RB;
-    [SerializeField] private float _speed = 5f;
 
     [Header("Other Components")]
     [SerializeField] private Animator _animator;
@@ -63,16 +65,14 @@ public class Player : MonoBehaviour
     #region Movement
     private void HandleMovement()
     {
-        float movementHorizontal = Input.GetAxis("Horizontal");
-        float movementVertical = Input.GetAxis("Vertical");
-        Vector2 movement = new Vector2(movementHorizontal, movementVertical);
+        Vector2 movementInput = _playerInput.actions["Movement"].ReadValue<Vector2>();
 
-        _RB.velocity = movement * _speed;
-        HandleRotation(movementHorizontal);
+        _RB.velocity = movementInput * _speed;
+        HandleRotation(movementInput.x);
 
         if (_animator != null)
         {
-            UpdateAnimations(movementHorizontal, movementVertical);
+            UpdateAnimations(movementInput);
         }
     }
 
@@ -90,9 +90,9 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Animation
-    private void UpdateAnimations(float movementHorizontal, float movementVertical)
+    private void UpdateAnimations(Vector2 movementInput)
     {
-        bool isWalking = movementHorizontal != 0 || movementVertical != 0;
+        bool isWalking = movementInput != Vector2.zero;
         _animator.SetBool("Walk", isWalking);
     }
     #endregion
