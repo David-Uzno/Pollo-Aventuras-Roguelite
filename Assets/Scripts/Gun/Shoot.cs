@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Shoot : MonoBehaviour
+public class Shoot : MonoBehaviour, IShootable
 {
     #region Variables
     [SerializeField] PlayerInput _playerInput;
     [SerializeField] Transform _shootingControl;
     [SerializeField] Transform _bullet;
-    [SerializeField] RectTransform _virtualCursor;
+    [SerializeField] GameManager _gameManager;
+    private RectTransform _virtualCursor;
 
     [Header("Mouse")]
     Vector3 _objetive;
@@ -24,6 +25,11 @@ public class Shoot : MonoBehaviour
     private void Start()
     {
         _mainCamera = Camera.main;
+
+        if (_gameManager != null)
+        {
+            _virtualCursor = _gameManager.GetVirtualCursor();
+        }
     }
 
     private void Update()
@@ -36,10 +42,14 @@ public class Shoot : MonoBehaviour
     #region Mouse
     private void UpdateAim()
     {
-        if (_virtualCursor != null)
+        if (_gameManager != null)
         {
-            // Usar la posición del Virtual Cursor
-            Vector2 cursorScreenPosition = _virtualCursor.position;
+            // Convertir la posición del RectTransform a coordenadas de pantalla
+            Vector2 cursorScreenPosition;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(_virtualCursor.parent as RectTransform, _virtualCursor.position, _mainCamera, out cursorScreenPosition);
+            cursorScreenPosition += new Vector2(Screen.width / 2, Screen.height / 2); // Ajustar el centro
+
+            // Convertir la posición de la pantalla a coordenadas del mundo
             _objetive = _mainCamera.ScreenToWorldPoint(new Vector3(cursorScreenPosition.x, cursorScreenPosition.y, _mainCamera.nearClipPlane));
         }
         else
@@ -67,15 +77,25 @@ public class Shoot : MonoBehaviour
         if (_playerInput.actions["Shoot"].ReadValue<float>() > 0)
         {
             // Condición de Cooldown
-            if (Time.time > _shotTime)
+            if (CanShoot())
             {
                 // Instancia de la Bala
-                Instantiate(_bullet, _shootingControl.position, _shootingControl.rotation);
+                FireWeapon();
 
                 // Tiempo de Cooldown
                 _shotTime = Time.time + _shotCooldown;
             }
         }
+    }
+
+    public void FireWeapon()
+    {
+        Instantiate(_bullet, _shootingControl.position, _shootingControl.rotation);
+    }
+
+    public bool CanShoot()
+    {
+        return Time.time > _shotTime;
     }
     #endregion
 }

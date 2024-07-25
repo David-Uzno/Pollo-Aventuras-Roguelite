@@ -29,17 +29,10 @@ public class Ball : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            FatherEnemy fatherEnemy = other.GetComponent<FatherEnemy>();
-            if (fatherEnemy != null)
+            IDamageable damageable = other.GetComponent<IDamageable>();
+            if (damageable != null)
             {
-                fatherEnemy.TakeDamage(1);
-                return;
-            }
-
-            GigantRacoonBoss gigantRacoonBoss = other.GetComponent<GigantRacoonBoss>();
-            if (gigantRacoonBoss != null)
-            {
-                gigantRacoonBoss.TakeDamage(1);
+                damageable.TakeDamage(1);
             }
         }
     }

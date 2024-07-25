@@ -8,25 +8,25 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     #region Variables
-    [Header("Lifes")]
+    [Header("Player Lifes")]
     [SerializeField] private Image[] _heartImages;
     [SerializeField] private Sprite[] _heartStatuses;
     [SerializeField] private int _currentHeartCount;
     [SerializeField] private int _playerLifes = 6;
-    static int _minHeartCount = 3;
-    static int _maxHeartCount = 5;
+    private static int _minHeartCount = 3;
+    private static int _maxHeartCount = 5;
     private int _maxLifeMultiplier = 2;
 
-    [Header("Options")]
-    [SerializeField] private bool _activePause;
-    [SerializeField] private GameObject _pause;
-    [SerializeField] private bool _activeVirtualCursor;
-    [SerializeField] private GameObject _virtualCursor;
+    [Header("Pause Options")]
+    [SerializeField] private bool _isPauseEnabled;
+    [SerializeField] private GameObject _pauseMenu;
 
-    [Header("Virtual Cursor")]
-    
+    [Header("Virtual Cursor Options")]
+    [SerializeField] private bool _isVirtualCursorEnabled;
+    [SerializeField] private GameObject _virtualCursorGameObject;
+    [SerializeField] private RectTransform _virtualCursorRectTransform;
 
-    [Header("Auto-Destroy")]
+    [Header("Scene Management")]
     [SerializeField] private List<SceneAsset> scenesToDestroyAssets;
     private List<string> scenesToDestroyNames = new List<string>();
     #endregion
@@ -83,30 +83,22 @@ public class GameManager : MonoBehaviour
         // Actualización de corazones en el HUD
         UpdateHeartsCurrents();
 
-        Options();
+        ApplyOptions();
     }
     #endregion
 
     #region Options
-    private void Options()
+    private void ApplyOptions()
     {
-        if (_activePause)
-        {
-            _pause.SetActive(true);
-        }
-        else
-        {
-            _pause.SetActive(false);
-        }
+        _pauseMenu.SetActive(_isPauseEnabled);
+        _virtualCursorGameObject.SetActive(_isVirtualCursorEnabled);
+    }
+    #endregion
 
-        if (_activeVirtualCursor)
-        {
-            _virtualCursor.SetActive(true);
-        }
-        else
-        {
-            _virtualCursor.SetActive(false);
-        }
+    #region Cursor
+    public RectTransform GetVirtualCursor()
+    {
+        return _virtualCursorRectTransform;
     }
     #endregion
 
@@ -134,7 +126,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region Life
+    #region Player Lifes
     public int GetMaxLife()
     {
         return _currentHeartCount * _maxLifeMultiplier;

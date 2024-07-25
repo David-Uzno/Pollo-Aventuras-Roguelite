@@ -191,10 +191,11 @@ MonoBehaviour:
   - {fileID: 318612031, guid: 276d7769a025d1d49b8b1f83568138bc, type: 3}
   _currentHeartCount: 3
   _playerLifes: 6
-  _activePause: 1
-  _pause: {fileID: 8998674098485657904}
-  _activeVirtualCursor: 1
-  _virtualCursor: {fileID: 5926452877591853581}
+  _isPauseEnabled: 1
+  _pauseMenu: {fileID: 8998674098485657904}
+  _isVirtualCursorEnabled: 1
+  _virtualCursorGameObject: {fileID: 5926452877591853581}
+  _virtualCursorRectTransform: {fileID: 3035892104470295334}
   scenesToDestroyAssets:
   - {fileID: 102900000, guid: d1baf4f1f7c14a74a918147b6b89d3cf, type: 3}
   - {fileID: 102900000, guid: 6bdbc09187b5d8d46bad23a4c1cc6157, type: 3}

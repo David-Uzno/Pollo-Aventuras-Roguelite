@@ -9,18 +9,17 @@ public class Heart : FatherObject
     public delegate void HeartCollected();
     public static event HeartCollected OnHeartCollected;
 
-    protected override void ExecuteAction(Collider2D collision)
+    public override void Collect(Player player)
     {
-        Player player = collision.GetComponent<Player>();
-        if (player != null)
-        {
-            player.RecoverLife(_recoveryAmount);
-        }
+        player.RecoverLife(_recoveryAmount);
         NotifyHeartCollection();
     }
 
     private void NotifyHeartCollection()
     {
-        OnHeartCollected?.Invoke();
+        if (OnHeartCollected != null)
+        {
+            OnHeartCollected.Invoke();
+        }
     }
 }

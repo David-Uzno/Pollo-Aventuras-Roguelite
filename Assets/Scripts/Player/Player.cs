@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable, IHealable
 {
     #region Variables
     [Header("Movement")]
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            LoseLife();
+            TakeDamage(1);
         }
     }
     #endregion
@@ -109,11 +109,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void LoseLife()
+    public void TakeDamage(float damage)
     {
         if (_isInvincible) return;
 
-        _life--;
+        _life -= (int)damage;
         if (_flashCoroutine != null)
         {
             StopCoroutine(_flashCoroutine);

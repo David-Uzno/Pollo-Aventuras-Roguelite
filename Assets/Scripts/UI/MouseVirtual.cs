@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class MouseVirtual : MonoBehaviour
 {
+    #region Variables
     [SerializeField] PlayerInput _playerInput;
     [SerializeField] RectTransform _virtualCursor;
     [SerializeField] float _cursorSpeed = 100f;
@@ -12,7 +13,9 @@ public class MouseVirtual : MonoBehaviour
     [SerializeField] bool _useRightStickControl = true;
     Vector2 _virtualCursorPosition;
     Camera _mainCamera;
+    #endregion
 
+    #region Unity Methods
     void Start()
     {
         _mainCamera = Camera.main;
@@ -57,4 +60,5 @@ public class MouseVirtual : MonoBehaviour
             _virtualCursor.position = _virtualCursorPosition;
         }
     }
+    #endregion
 }

@@ -282,5 +282,5 @@ MonoBehaviour:
   _playerInput: {fileID: 6329505628582936350}
   _shootingControl: {fileID: 1169941877130861305}
   _bullet: {fileID: 5678428310395112900, guid: fe1410e2a657882469f65aa588749005, type: 3}
-  _virtualCursor: {fileID: 0}
+  _gameManager: {fileID: 7994035498542604605, guid: 53ed035cf4810fe4986e1dc8fe616a46, type: 3}
   _shotCooldown: 0.25

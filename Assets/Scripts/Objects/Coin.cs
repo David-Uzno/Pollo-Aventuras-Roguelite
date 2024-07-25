@@ -30,27 +30,24 @@ public class Coin : FatherObject
         }
     }
 
-    protected override void ExecuteAction(Collider2D collision)
+    public override void Collect(Player player)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            // Crear un GameObject Temporal
-            GameObject audioObject = new GameObject("CoinSound");
-            AudioSource audioSource = audioObject.AddComponent<AudioSource>();
-            audioSource.clip = _audioClip;
-            audioSource.volume = _volume;
-            audioSource.Play();
-            Destroy(audioObject, _audioClip.length);
+        // Crear un GameObject Temporal para reproducir el sonido
+        GameObject audioObject = new GameObject("CoinSound");
+        AudioSource audioSource = audioObject.AddComponent<AudioSource>();
+        audioSource.clip = _audioClip;
+        audioSource.volume = _volume;
+        audioSource.Play();
+        Destroy(audioObject, _audioClip.length);
 
-            // Aumentar el Contador
-            if (_counterMoney != null)
-            {
-                _counterMoney.Increase();
-            }
-            else
-            {
-                Debug.LogWarning("MoneyCounter no está asignado en Coin.");
-            }
+        // Aumentar el Contador
+        if (_counterMoney != null)
+        {
+            _counterMoney.Increase();
+        }
+        else
+        {
+            Debug.LogWarning("MoneyCounter no está asignado en Coin.");
         }
     }
 }

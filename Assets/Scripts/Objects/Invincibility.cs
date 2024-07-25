@@ -7,22 +7,15 @@ public class Invincibility : FatherObject
     [SerializeField] private Color _invincibleColor = Color.cyan;
     [SerializeField] private float _invincibilityDuration = 5f;
 
-    protected override void ExecuteAction(Collider2D collision)
+    public override void Collect(Player player)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Player player = collision.gameObject.GetComponent<Player>();
-            if (player != null)
-            {
-                // Activar invencibilidad
-                player.SetInvincibility(true, _invincibleColor);
+        // Activar invencibilidad
+        player.SetInvincibility(true, _invincibleColor);
 
-                // Crear GameObject temporal
-                GameObject tempObject = new GameObject("TempInvincibility");
-                TempInvincibility tempScript = tempObject.AddComponent<TempInvincibility>();
-                tempScript.Initialize(player, _invincibilityDuration);
-            }
-        }
+        // Crear GameObject temporal
+        GameObject tempObject = new GameObject("TempInvincibility");
+        TempInvincibility tempScript = tempObject.AddComponent<TempInvincibility>();
+        tempScript.Initialize(player, _invincibilityDuration);
     }
 }
 

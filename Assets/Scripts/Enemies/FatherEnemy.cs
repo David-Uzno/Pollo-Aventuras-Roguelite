@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class FatherEnemy : MonoBehaviour
+public abstract class FatherEnemy : MonoBehaviour, IDamageable
 {
     #region Variables
     [SerializeField] private float _life = 1f;

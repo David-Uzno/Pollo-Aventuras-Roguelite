@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GigantRacoonBoss : MonoBehaviour
+public class GigantRacoonBoss : MonoBehaviour, IDamageable
 {
     #region Variables
     [Header("Life and Scene Management")]
