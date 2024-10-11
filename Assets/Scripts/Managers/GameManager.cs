@@ -27,7 +27,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private RectTransform _virtualCursorRectTransform;
 
     [Header("Scene Management")]
-    [SerializeField] private List<SceneAsset> scenesToDestroyAssets;
+    #if UNITY_EDITOR
+    [SerializeField] private List<UnityEditor.SceneAsset> scenesToDestroyAssets;
+    #endif
     private List<string> scenesToDestroyNames = new List<string>();
     #endregion
 
@@ -106,6 +108,8 @@ public class GameManager : MonoBehaviour
     private void ConvertSceneAssetsToNames()
     {
         scenesToDestroyNames = new List<string>();
+
+        #if UNITY_EDITOR
         foreach (var sceneAsset in scenesToDestroyAssets)
         {
             if (sceneAsset != null)
@@ -113,6 +117,7 @@ public class GameManager : MonoBehaviour
                 scenesToDestroyNames.Add(sceneAsset.name);
             }
         }
+        #endif
     }
 
     public void CheckSceneDelete()
